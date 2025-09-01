@@ -1,0 +1,334 @@
+---
+import '../../styles/global.css'
+import Layout from "../../layouts/Layout.astro"
+
+import Header from '../../components/Header.astro'
+import Footer from '../../components/Footer.astro'
+import Button from '../../components/Button.astro'
+
+import svgPinkStar from '../../assets/pink-star.svg'
+import svgRedStar from '../../assets/red-star.svg'
+import svgIdea from '../../assets/idea.svg'
+
+const services = [
+  { title: 'Calendar Management', desc: 'Professional scheduling and appointment coordination', icon: '📅' },
+  { title: 'Consultant Reports', desc: 'Comprehensive business analysis and reporting', icon: '📊' },
+  { title: 'Digital Systems', desc: 'Technology infrastructure management and optimization', icon: '💻' },
+  { title: 'Professional Presence', desc: 'Brand management and online reputation', icon: '🌟' },
+  { title: 'Social Media Content', desc: 'Strategic content creation and engagement', icon: '📱' },
+  { title: 'Project Management', desc: 'End-to-end project coordination and delivery', icon: '🎯' },
+  { title: 'Billing Management', desc: 'Professional invoicing and financial administration', icon: '💰' },
+  { title: 'Travel Arrangements', desc: 'Complete travel planning and logistics coordination', icon: '✈️' },
+  { title: 'Website Maintenance', desc: 'Technical updates and content management', icon: '🌐' }
+]
+
+const consultingTypes = [
+  { name: 'Business Consultants', desc: 'Strategy, operations, and growth advisory services', icon: '📈' },
+  { name: 'IT Consultants', desc: 'Technology implementation and digital transformation', icon: '💻' },
+  { name: 'Financial Consultants', desc: 'Financial planning, analysis, and advisory services', icon: '💰' },
+  { name: 'HR Consultants', desc: 'Human resources strategy and organizational development', icon: '👥' },
+  { name: 'Marketing Consultants', desc: 'Brand strategy, digital marketing, and growth campaigns', icon: '📊' },
+  { name: 'Management Consultants', desc: 'Leadership development and operational excellence', icon: '⚡' }
+]
+
+const benefits = [
+  { title: 'Focus on Core Expertise', desc: 'Spend more time on high-value consulting work', icon: '🎯' },
+  { title: 'Professional Image', desc: 'Maintain consistent, polished business presence', icon: '✨' },
+  { title: 'Client Satisfaction', desc: 'Improved service delivery and communication', icon: '😊' },
+  { title: 'Business Growth', desc: 'Scale operations without overhead burden', icon: '📈' }
+]
+---
+
+<Layout>
+  <Header />
+  
+  <!-- Hero Section -->
+  <section class="relative px-3 md:px-10 py-20 overflow-hidden bg-gradient-to-br from-purple-50 to-blue-50 w-full">
+    <div class="max-w-6xl mx-auto w-full px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="text-4xl">💼</div>
+            <span class="text-lg font-semibold text-purple-600">Consultancy Business Solutions</span>
+          </div>
+          <h1 class="text-5xl md:text-6xl font-bold mb-6">
+            <span>Amplify Your Consulting</span>
+            <span class="relative block">
+              <span class="absolute bg-[var(--yellow)] w-full h-[50%] left-0 bottom-0 z-1"></span>
+              <span class="relative z-5">Impact & Reach</span>
+            </span>
+          </h1>
+          <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+            Tailored solutions specifically designed for consultants to optimize operations, 
+            improve productivity, and provide crucial administrative support that scales with your expertise.
+          </p>
+          <Button text="Elevate Your Practice" link="/#quiz" target="_self" />
+        </div>
+        
+        <div class="relative">
+          <img src={svgRedStar.src} width="80" alt="star" class="absolute -top-10 -right-8 z-10" />
+          <img src={svgIdea.src} width="60" alt="idea" class="absolute bottom-20 -left-8 z-10" />
+          
+          <div class="bg-white p-8 border-3 shadow-[8px_8px_0px_rgba(0,0,0,0.3)] transform rotate-2">
+            <h3 class="text-2xl font-bold mb-6 text-center">Client Success Story</h3>
+            <div class="bg-purple-50 p-6 rounded-lg mb-4">
+              <p class="text-gray-700 italic mb-4">
+                "I continue to be absolutely thrilled with everything! Yoonet truly went above and beyond in finding the VA for my business."
+              </p>
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold">A</div>
+                <div>
+                  <div class="font-bold">Aimee Accinno</div>
+                  <div class="text-sm text-gray-600">Systems Made Simple</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img src={svgPinkStar.src} alt="star" width="50" class="absolute bottom-10 left-10" />
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-20 px-3 md:px-10">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Comprehensive Consulting Support</h2>
+        <p class="text-xl text-gray-600">Every service designed to enhance your consulting practice</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map((service, index) => (
+          <div class={`bg-white p-6 border-2 shadow-[4px_4px_0px_rgba(0,0,0,0.3)] rounded-lg transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0 hover:scale-105 transition-all duration-300`}>
+            <div class="text-4xl mb-4">{service.icon}</div>
+            <h3 class="text-lg font-bold mb-2 text-purple-600">{service.title}</h3>
+            <p class="text-gray-600 text-sm">{service.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Consulting Types -->
+  <section class="py-20 px-3 md:px-10 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Consulting Specializations We Support</h2>
+        <p class="text-xl text-gray-600">Expertise across diverse consulting disciplines</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {consultingTypes.map((type, index) => (
+          <div class={`bg-white p-8 border-2 shadow-[6px_6px_0px_rgba(0,0,0,0.3)] rounded-lg transform ${index % 2 === 0 ? '-rotate-1' : 'rotate-1'} hover:rotate-0 transition-all duration-300`}>
+            <div class="text-5xl mb-4">{type.icon}</div>
+            <h3 class="text-xl font-bold mb-3 text-blue-600">{type.name}</h3>
+            <p class="text-gray-700">{type.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Digital Presence Focus -->
+  <section class="py-20 px-3 md:px-10 bg-gradient-to-br from-purple-600 to-blue-600 text-white relative overflow-hidden">
+    <img src={svgPinkStar.src} alt="star" width="100" class="absolute -top-12 right-20 opacity-20" />
+    
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Professional Digital Presence</h2>
+        <p class="text-xl opacity-90">Maintain a consistent, polished online presence that reflects your expertise</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white/10 backdrop-blur p-6 rounded-lg border border-white/20">
+          <div class="text-3xl mb-4">🌐</div>
+          <h3 class="text-lg font-bold mb-2">Website Management</h3>
+          <p class="text-sm opacity-90">Keep your site updated, secure, and optimized</p>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur p-6 rounded-lg border border-white/20">
+          <div class="text-3xl mb-4">📱</div>
+          <h3 class="text-lg font-bold mb-2">Social Media</h3>
+          <p class="text-sm opacity-90">Strategic content and engagement management</p>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur p-6 rounded-lg border border-white/20">
+          <div class="text-3xl mb-4">📧</div>
+          <h3 class="text-lg font-bold mb-2">Email Marketing</h3>
+          <p class="text-sm opacity-90">Professional newsletters and client communication</p>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur p-6 rounded-lg border border-white/20">
+          <div class="text-3xl mb-4">📊</div>
+          <h3 class="text-lg font-bold mb-2">Analytics & Reports</h3>
+          <p class="text-sm opacity-90">Performance tracking and insights</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Management Excellence -->
+  <section class="py-20 px-3 md:px-10">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="text-4xl md:text-5xl font-bold mb-8">Project Management Excellence</h2>
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white">🎯</div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Project Coordination</h3>
+                <p class="text-gray-600">End-to-end management from initiation to delivery</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white">👥</div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Client Communication</h3>
+                <p class="text-gray-600">Regular updates and stakeholder engagement</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white">📋</div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Documentation</h3>
+                <p class="text-gray-600">Comprehensive project records and reporting</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white">⚡</div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Quality Assurance</h3>
+                <p class="text-gray-600">Ensuring deliverables meet your standards</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="relative">
+          <div class="bg-gradient-to-br from-purple-500 to-blue-500 p-8 rounded-2xl text-white transform -rotate-2">
+            <h3 class="text-2xl font-bold mb-6">Project Success Metrics</h3>
+            <div class="space-y-4">
+              <div class="bg-white/20 backdrop-blur p-4 rounded-lg">
+                <div class="flex justify-between items-center">
+                  <span>On-Time Delivery</span>
+                  <span class="font-bold">98%</span>
+                </div>
+              </div>
+              <div class="bg-white/20 backdrop-blur p-4 rounded-lg">
+                <div class="flex justify-between items-center">
+                  <span>Budget Adherence</span>
+                  <span class="font-bold">95%</span>
+                </div>
+              </div>
+              <div class="bg-white/20 backdrop-blur p-4 rounded-lg">
+                <div class="flex justify-between items-center">
+                  <span>Client Satisfaction</span>
+                  <span class="font-bold">97%</span>
+                </div>
+              </div>
+              <div class="bg-white/20 backdrop-blur p-4 rounded-lg">
+                <div class="flex justify-between items-center">
+                  <span>Quality Standards</span>
+                  <span class="font-bold">99%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <img src={svgRedStar.src} alt="star" width="60" class="absolute -bottom-6 -right-6" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-20 px-3 md:px-10 bg-gradient-to-br from-blue-50 to-purple-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Transformational Benefits</h2>
+        <p class="text-xl text-gray-600">How our support elevates your consulting practice</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {benefits.map((benefit, index) => (
+          <div class={`bg-white p-8 rounded-lg border-2 shadow-[6px_6px_0px_rgba(0,0,0,0.3)] transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0 transition-all duration-300`}>
+            <div class="text-5xl mb-4">{benefit.icon}</div>
+            <h3 class="text-xl font-bold mb-3 text-purple-600">{benefit.title}</h3>
+            <p class="text-gray-700">{benefit.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Critical Pillar Concept -->
+  <section class="py-20 px-3 md:px-10 bg-gradient-to-br from-purple-600 to-blue-600 text-white relative">
+    <img src={svgPinkStar.src} alt="star" width="80" class="absolute bottom-20 right-20 opacity-20" />
+    
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-8">Your Critical Business Pillar</h2>
+      <p class="text-xl mb-12 opacity-90 max-w-3xl mx-auto">
+        Our talents act as a critical pillar of any consultancy, adept at managing diverse tasks 
+        that allow you to focus on what you do best - delivering exceptional consulting services.
+      </p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white/10 backdrop-blur p-8 rounded-lg border border-white/20">
+          <div class="text-4xl mb-4">🔧</div>
+          <h3 class="text-xl font-bold mb-3">Operational Excellence</h3>
+          <p class="opacity-90">Streamlined processes that enhance efficiency</p>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur p-8 rounded-lg border border-white/20">
+          <div class="text-4xl mb-4">📈</div>
+          <h3 class="text-xl font-bold mb-3">Growth Enablement</h3>
+          <p class="opacity-90">Support that scales with your consulting practice</p>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur p-8 rounded-lg border border-white/20">
+          <div class="text-4xl mb-4">💎</div>
+          <h3 class="text-xl font-bold mb-3">Quality Assurance</h3>
+          <p class="opacity-90">Consistent, professional service delivery</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 px-3 md:px-10 bg-black text-white relative overflow-hidden">
+    <img src={svgRedStar.src} alt="star" width="120" class="absolute -top-16 -left-16 opacity-20" />
+    
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-8">Ready to Scale Your Consulting Impact?</h2>
+      <p class="text-xl mb-12 opacity-90">
+        Join successful consultants who have transformed their practice with our 
+        comprehensive administrative and operational support services.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <Button text="Amplify Your Practice" link="/#quiz" target="_self" />
+        <div class="bg-white/10 backdrop-blur p-4 rounded-lg border border-white/20">
+          <div class="text-lg">💼 Consulting-specialized support available</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .transform:hover {
+    transform: rotate(0deg) scale(1.02) !important;
+  }
+  
+  @media (max-width: 768px) {
+    .rotate-1, .-rotate-1, .rotate-2, .-rotate-2 {
+      transform: rotate(0deg) !important;
+    }
+  }
+</style>

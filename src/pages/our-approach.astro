@@ -1,0 +1,326 @@
+---
+import '../styles/global.css'
+import Layout from "../layouts/Layout.astro"
+
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import Button from '../components/Button.astro'
+
+import svgPinkStar from '../assets/pink-star.svg'
+import svgRedStar from '../assets/red-star.svg'
+import svgIdea from '../assets/idea.svg'
+import svgheroContent from '../assets/hero-content.svg'
+
+const approachSteps = [
+  {
+    step: '01',
+    title: 'Discovery & Understanding',
+    desc: 'We start by deeply understanding your business, culture, and specific needs through comprehensive consultation',
+    icon: '🔍',
+    color: 'bg-blue-100 border-blue-300'
+  },
+  {
+    step: '02', 
+    title: 'Talent Curation',
+    desc: 'Our rigorous selection process identifies professionals who align with your values and business objectives',
+    icon: '👥',
+    color: 'bg-purple-100 border-purple-300'
+  },
+  {
+    step: '03',
+    title: 'Cultural Integration',
+    desc: 'We facilitate seamless integration through cultural bridging and comprehensive onboarding processes',
+    icon: '🌉',
+    color: 'bg-green-100 border-green-300'
+  },
+  {
+    step: '04',
+    title: 'Ongoing Partnership',
+    desc: 'Continuous support, feedback, and optimization ensure long-term success and team development',
+    icon: '🚀',
+    color: 'bg-yellow-100 border-yellow-300'
+  }
+]
+
+const differentiators = [
+  {
+    title: 'Fully Incorporated Filipino Business',
+    desc: 'Not just an agency - we\'re a legitimate, fully incorporated business providing stability and professional structure',
+    icon: '🏢'
+  },
+  {
+    title: 'We Cultivate Careers, Not Just Fill Positions',
+    desc: 'Ongoing support, professional development, and career refinement for every team member',
+    icon: '🌱'
+  },
+  {
+    title: 'Physical Collaboration, Not Isolation',
+    desc: 'Our team works together in person, fostering genuine collaboration and community',
+    icon: '🤝'
+  },
+  {
+    title: 'Community Connection',
+    desc: 'Deep roots in Balanga community with healthcare, stability, and local engagement initiatives',
+    icon: '🏠'
+  }
+]
+
+const principles = [
+  {
+    principle: 'Stability First',
+    explanation: 'We attract professionals who value long-term relationships and sustainable growth over quick turnover',
+    visual: '⚖️'
+  },
+  {
+    principle: 'Growth Mindset',
+    explanation: 'Every team member has access to continuous learning, skill development, and career advancement opportunities',
+    visual: '📈'
+  },
+  {
+    principle: 'Community Focus',
+    explanation: 'Regular team events, healthcare support, and connection to broader community initiatives create belonging',
+    visual: '🎯'
+  },
+  {
+    principle: 'Results Through Relationships',
+    explanation: 'Strong personal connections and cultural understanding drive exceptional business outcomes',
+    visual: '💪'
+  }
+]
+---
+
+<Layout>
+  <Header />
+  
+  <!-- Hero Section -->
+  <section class="relative px-3 md:px-10 py-20 overflow-hidden">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
+        <div>
+          <img src={svgheroContent.src} alt="Our Approach" width="100" class="mb-6" />
+          <h1 class="text-5xl md:text-6xl font-bold mb-6">
+            <span>More Than Outsourcing</span>
+            <span class="relative block">
+              <span class="absolute bg-[var(--yellow)] w-full h-[50%] left-0 bottom-0 z-1"></span>
+              <span class="relative z-5">True Partnership</span>
+            </span>
+          </h1>
+          <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+            Our approach isn't about finding the cheapest labor - it's about creating meaningful partnerships that drive exceptional results for your business while fostering genuine career growth for our Filipino professionals.
+          </p>
+          <Button text="Discover Our Method" link="#our-process" target="_self" />
+        </div>
+        
+        <div class="relative">
+          <img src={svgRedStar.src} width="80" alt="star" class="absolute -top-10 -right-8 z-10" />
+          <img src={svgIdea.src} width="60" alt="idea" class="absolute top-32 -left-8 z-10" />   
+          
+          <div class="bg-white p-8 border-3 shadow-[8px_8px_0px_rgba(0,0,0,0.3)] transform rotate-2">
+            <div class="text-center">
+              <div class="text-6xl mb-6">🎯</div>
+              <h3 class="text-2xl font-bold mb-4">Partnership-Driven Results</h3>
+              <div class="grid grid-cols-2 gap-4 text-sm">
+                <div class="bg-blue-50 p-3 rounded">
+                  <div class="font-bold text-blue-600">95%</div>
+                  <div>Retention Rate</div>
+                </div>
+                <div class="bg-green-50 p-3 rounded">
+                  <div class="font-bold text-green-600">24/7</div>
+                  <div>Support Coverage</div>
+                </div>
+                <div class="bg-purple-50 p-3 rounded">
+                  <div class="font-bold text-purple-600">100%</div>
+                  <div>SME Focused</div>
+                </div>
+                <div class="bg-yellow-50 p-3 rounded">
+                  <div class="font-bold text-yellow-600">14+</div>
+                  <div>Years Experience</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <img src={svgPinkStar.src} alt="star" width="50" class="absolute bottom-10 left-10" />
+  </section>
+
+  <!-- Process Section -->
+  <section id="our-process" class="py-20 px-3 md:px-10 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Our Proven Process</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Four carefully designed steps that ensure exceptional outcomes and long-lasting partnerships
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {approachSteps.map((step, index) => (
+          <div class={`relative ${step.color} p-8 rounded-lg border-2 transform hover:-rotate-1 transition-all duration-300`}>
+            <div class="absolute -top-4 -left-4 w-12 h-12 bg-black text-white rounded-full flex items-center justify-center font-bold text-lg">
+              {step.step}
+            </div>
+            <div class="text-4xl mb-4 mt-4">{step.icon}</div>
+            <h3 class="text-xl font-bold mb-3">{step.title}</h3>
+            <p class="text-gray-700 leading-relaxed">{step.desc}</p>
+            
+            {index < approachSteps.length - 1 && (
+              <div class="hidden lg:block absolute -right-8 top-1/2 transform -translate-y-1/2 text-gray-300 text-3xl">→</div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What Makes Us Different -->
+  <section class="py-20 px-3 md:px-10">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">What Sets Us Apart</h2>
+        <p class="text-xl text-gray-600">The differentiators that make Yoonet more than just another BPO provider</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {differentiators.map((diff, index) => (
+          <div class={`bg-white p-8 border-2 shadow-[6px_6px_0px_rgba(0,0,0,0.3)] transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0 transition-all duration-300`}>
+            <div class="text-5xl mb-4">{diff.icon}</div>
+            <h3 class="text-2xl font-bold mb-4 text-blue-600">{diff.title}</h3>
+            <p class="text-gray-700 leading-relaxed">{diff.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Principles -->
+  <section class="py-20 px-3 md:px-10 bg-gradient-to-br from-blue-600 to-purple-600 text-white relative overflow-hidden">
+    <img src={svgPinkStar.src} alt="star" width="100" class="absolute -top-12 right-20 opacity-20 rotate-45" />
+    <img src={svgRedStar.src} alt="star" width="80" class="absolute bottom-20 left-20 opacity-20" />
+    
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Our Core Principles</h2>
+        <p class="text-xl max-w-3xl mx-auto opacity-90">
+          The foundational beliefs that guide every decision we make and every partnership we build
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {principles.map((principle, index) => (
+          <div class="bg-white/10 backdrop-blur p-8 rounded-lg border border-white/20 transform hover:scale-105 transition-all duration-300">
+            <div class="flex items-start gap-4">
+              <div class="text-4xl">{principle.visual}</div>
+              <div class="flex-1">
+                <h3 class="text-2xl font-bold mb-3">{principle.principle}</h3>
+                <p class="leading-relaxed opacity-90">{principle.explanation}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- The Yoonet Difference -->
+  <section class="py-20 px-3 md:px-10">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-4xl md:text-5xl font-bold mb-6">Beyond Traditional BPO</h2>
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">✓</div>
+              <div>
+                <h4 class="font-bold text-lg mb-2">We don't just hire staff — we cultivate careers</h4>
+                <p class="text-gray-600">Every team member receives ongoing support, professional development, and opportunities for growth.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">✓</div>
+              <div>
+                <h4 class="font-bold text-lg mb-2">Physical collaboration, not isolated work</h4>
+                <p class="text-gray-600">Our team works together in person, creating genuine relationships and collaborative outcomes.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold">✓</div>
+              <div>
+                <h4 class="font-bold text-lg mb-2">Community-rooted stability</h4>
+                <p class="text-gray-600">Healthcare, team events, and deep community connections create a sense of belonging and long-term commitment.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="relative">
+          <div class="bg-gradient-to-br from-yellow-400 to-orange-500 p-8 rounded-lg transform rotate-3 shadow-lg">
+            <div class="bg-white p-6 rounded-lg transform -rotate-3">
+              <h3 class="text-2xl font-bold mb-4 text-gray-800">The Partnership Promise</h3>
+              <p class="text-gray-700 leading-relaxed">
+                "Partnering with Yoonet means embarking on an offshoring journey filled with opportunities, effective support mechanisms, and maximized results tailored to your unique needs."
+              </p>
+              <div class="mt-6 flex items-center gap-3">
+                <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                  <span class="text-2xl">🎯</span>
+                </div>
+                <div>
+                  <div class="font-bold">Tailored Solutions</div>
+                  <div class="text-sm text-gray-600">Customized to your business</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <img src={svgIdea.src} alt="idea" width="50" class="absolute -top-6 -right-6" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-20 px-3 md:px-10 bg-black text-white relative overflow-hidden">
+    <img src={svgPinkStar.src} alt="star" width="120" class="absolute -top-16 -left-16 opacity-20" />
+    <img src={svgRedStar.src} alt="star" width="100" class="absolute -bottom-12 -right-12 opacity-20" />
+    
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-8">Ready to Experience the Difference?</h2>
+      <p class="text-xl mb-12 opacity-90 max-w-3xl mx-auto">
+        Our approach has helped dozens of Australian businesses find their perfect offshore partners. 
+        Let us show you what true partnership in outsourcing looks like.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <Button text="Start Your Journey" link="/#quiz" target="_self" />
+        <div class="bg-white/10 backdrop-blur p-4 rounded-lg border border-white/20">
+          <div class="text-white text-lg">🇦🇺 🇳🇿 Made for ANZ businesses</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Enhanced hover effects */
+  .transform:hover {
+    transform: rotate(0deg) scale(1.02) !important;
+  }
+  
+  /* Smooth transitions for all interactive elements */
+  .transition-all {
+    transition: all 0.3s ease;
+  }
+  
+  /* Mobile responsive adjustments */
+  @media (max-width: 768px) {
+    .rotate-1, .-rotate-1, .rotate-2, .rotate-3 {
+      transform: rotate(0deg) !important;
+    }
+  }
+</style>

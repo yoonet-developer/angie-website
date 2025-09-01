@@ -1,0 +1,445 @@
+---
+import Button from './Button.astro'
+import svgPinkStar from '../assets/pink-star.svg'
+
+const businessTypes = [
+  { id: 'trades', name: 'Trades & Services', icon: '🔧' },
+  { id: 'professional', name: 'Professional Services', icon: '💼' },
+  { id: 'creative', name: 'Creative & Marketing', icon: '🎨' },
+  { id: 'healthcare', name: 'Allied Health', icon: '🏥' },
+  { id: 'retail', name: 'Retail & E-commerce', icon: '🛒' },
+  { id: 'tech', name: 'Technology', icon: '💻' }
+]
+
+const teamSizes = [
+  { id: 'solo', name: 'Just Me', subtitle: '1 person', icon: '👤' },
+  { id: 'small', name: 'Small Team', subtitle: '2-10 people', icon: '👥' },
+  { id: 'medium', name: 'Medium Team', subtitle: '11-50 people', icon: '👥👥' },
+  { id: 'large', name: 'Large Team', subtitle: '50+ people', icon: '👥👥👥' }
+]
+
+const needsOptions = [
+  { id: 'admin', name: 'Admin Support', desc: 'Data entry, scheduling, email management, document preparation' },
+  { id: 'customer', name: 'Customer Service', desc: 'Phone support, live chat, email support, help desk' },
+  { id: 'marketing', name: 'Marketing', desc: 'Social media management, content creation, SEO, advertising' },
+  { id: 'sales', name: 'Sales Support', desc: 'Lead generation, CRM management, appointment setting' },
+  { id: 'finance', name: 'Finance & Accounting', desc: 'Bookkeeping, invoicing, payroll, financial reporting' },
+  { id: 'design', name: 'Design & Creative', desc: 'Graphic design, web design, video editing, content creation' }
+]
+---
+
+<style>
+  .quiz-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    border: 3px solid black;
+    box-shadow: 8px 8px 0px rgba(0,0,0,0.3);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .step-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px 20px 20px;
+    background: #f8f9ff;
+  }
+  
+  .step {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    background: white;
+    color: #999;
+  }
+  
+  .step.active {
+    background: #6366f1;
+    color: white;
+    border-color: #6366f1;
+  }
+  
+  .step.completed {
+    background: #10b981;
+    color: white;
+    border-color: #10b981;
+  }
+  
+  .step-label {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 5px;
+    color: #666;
+  }
+  
+  .quiz-content {
+    padding: 40px;
+  }
+  
+  .option-grid {
+    display: grid;
+    gap: 15px;
+    margin-top: 30px;
+  }
+  
+  .option {
+    padding: 20px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: white;
+  }
+  
+  .option:hover {
+    border-color: #6366f1;
+    background: #f8f9ff;
+  }
+  
+  .option.selected {
+    border-color: #6366f1;
+    background: #6366f1;
+    color: white;
+  }
+  
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  .option-subtitle {
+    font-size: 14px;
+    opacity: 0.7;
+    margin-top: 4px;
+  }
+  
+  .option-desc {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-top: 8px;
+    line-height: 1.4;
+  }
+  
+  .quiz-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+  }
+  
+  .btn-quiz {
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 2px solid;
+    transition: all 0.2s;
+  }
+  
+  .btn-secondary {
+    background: white;
+    border-color: #d1d5db;
+    color: #6b7280;
+  }
+  
+  .btn-secondary:hover {
+    background: #f9fafb;
+  }
+  
+  .btn-primary {
+    background: #6366f1;
+    border-color: #6366f1;
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background: #5856eb;
+  }
+  
+  .btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .recommendation-card {
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 25px;
+    margin-top: 20px;
+    position: relative;
+  }
+  
+  .recommended-badge {
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: #10b981;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  .price {
+    color: #6366f1;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 15px 0;
+  }
+  
+  .feature-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 0;
+    color: #6b7280;
+  }
+  
+  .feature-item::before {
+    content: '✓';
+    color: #10b981;
+    font-weight: bold;
+  }
+</style>
+
+<section class="py-20 px-4 bg-gradient-to-br from-blue-50 to-purple-50" id="quiz">
+  <div class="max-w-4xl mx-auto text-center mb-12">
+    <h2 class="text-4xl font-bold mb-4 text-gray-800">Find Your Perfect Outsourcing Solution</h2>
+    <p class="text-xl text-gray-600">Answer 3 quick questions to get personalized recommendations</p>
+  </div>
+  
+  <div class="quiz-container" id="quizContainer">
+    <!-- Step Indicator -->
+    <div class="step-indicator">
+      <div class="step-wrapper">
+        <div class="step active" data-step="1">1</div>
+        <div class="step-label">Business Type</div>
+      </div>
+      <div class="step-wrapper">
+        <div class="step" data-step="2">2</div>
+        <div class="step-label">Team Size</div>
+      </div>
+      <div class="step-wrapper">
+        <div class="step" data-step="3">3</div>
+        <div class="step-label">Your Needs</div>
+      </div>
+      <div class="step-wrapper">
+        <div class="step" data-step="4">4</div>
+        <div class="step-label">Recommendations</div>
+      </div>
+    </div>
+    
+    <!-- Step 1: Business Type -->
+    <div class="quiz-content" id="step1">
+      <h3 class="text-2xl font-bold text-center mb-2 text-red-400">What type of business are you?</h3>
+      <p class="text-center text-gray-600 mb-6">This helps us understand your industry and specific needs</p>
+      
+      <div class="option-grid">
+        {businessTypes.map(type => (
+          <div class="option" data-value={type.id}>
+            <div class="option-header">
+              <span class="text-2xl">{type.icon}</span>
+              <span>{type.name}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div class="quiz-buttons">
+        <div></div>
+        <button class="btn-quiz btn-primary" id="nextStep1" disabled>Next</button>
+      </div>
+    </div>
+    
+    <!-- Step 2: Team Size -->
+    <div class="quiz-content hidden" id="step2">
+      <h3 class="text-2xl font-bold text-center mb-2 text-red-400">How big is your team?</h3>
+      <p class="text-center text-gray-600 mb-6">We'll recommend solutions that match your scale</p>
+      
+      <div class="option-grid">
+        {teamSizes.map(size => (
+          <div class="option" data-value={size.id}>
+            <div class="option-header">
+              <span class="text-2xl">{size.icon}</span>
+              <div>
+                <div>{size.name}</div>
+                <div class="option-subtitle">{size.subtitle}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div class="quiz-buttons">
+        <button class="btn-quiz btn-secondary" id="backStep2">Back</button>
+        <button class="btn-quiz btn-primary" id="nextStep2" disabled>Next</button>
+      </div>
+    </div>
+    
+    <!-- Step 3: Needs Assessment -->
+    <div class="quiz-content hidden" id="step3">
+      <h3 class="text-2xl font-bold text-center mb-2 text-red-400">What areas do you need help with?</h3>
+      <p class="text-center text-gray-600 mb-6">Select all that apply - we'll find the right solutions for each</p>
+      
+      <div class="option-grid">
+        {needsOptions.map(need => (
+          <div class="option" data-value={need.id} data-multiple="true">
+            <div class="option-header">
+              <span>{need.name}</span>
+            </div>
+            <div class="option-desc">{need.desc}</div>
+          </div>
+        ))}
+      </div>
+      
+      <div class="quiz-buttons">
+        <button class="btn-quiz btn-secondary" id="backStep3">Back</button>
+        <button class="btn-quiz btn-primary" id="nextStep3" disabled>Get Recommendations</button>
+      </div>
+    </div>
+    
+    <!-- Step 4: Recommendations -->
+    <div class="quiz-content hidden" id="step4">
+      <h3 class="text-2xl font-bold text-center mb-2 text-red-400">Perfect! Here's what we recommend</h3>
+      <p class="text-center text-gray-600 mb-6">Based on your team size and needs, these solutions will deliver the best results for your business</p>
+      
+      <h4 class="text-xl font-bold mb-4 text-gray-700">Best match for you</h4>
+      
+      <div class="recommendation-card">
+        <div class="recommended-badge">⭐ Recommended</div>
+        <h5 class="text-xl font-bold">Custom Outsourcing Solution</h5>
+        <p class="text-gray-600 mt-2">Tailored Philippines-based team with local NZ management and ongoing support.</p>
+        <div class="price">Starting from $2,500/month</div>
+        <ul class="feature-list">
+          <li class="feature-item">Dedicated team members matched to your needs</li>
+          <li class="feature-item">Local NZ account management and oversight</li>
+          <li class="feature-item">Cultural integration and process training</li>
+          <li class="feature-item">Ongoing performance monitoring and optimization</li>
+        </ul>
+        <div class="mt-6">
+          <Button text="Get Started Today" link="https://www.yoonet.io/contact" target="_blank" />
+        </div>
+      </div>
+      
+      <div class="quiz-buttons">
+        <button class="btn-quiz btn-secondary" id="backStep4">Back</button>
+        <button class="btn-quiz btn-secondary" id="restartQuiz">Start Over</button>
+      </div>
+    </div>
+  </div>
+  
+  <img src={svgPinkStar.src} alt="decoration" width="60" class="absolute -right-4 -bottom-4" />
+</section>
+
+<script>
+  let currentStep = 1;
+  let answers = {};
+  
+  function showStep(step) {
+    // Hide all steps
+    document.querySelectorAll('[id^="step"]').forEach(el => el.classList.add('hidden'));
+    // Show current step
+    document.getElementById(`step${step}`).classList.remove('hidden');
+    
+    // Update step indicators
+    document.querySelectorAll('.step').forEach((el, index) => {
+      el.classList.remove('active', 'completed');
+      if (index + 1 === step) {
+        el.classList.add('active');
+      } else if (index + 1 < step) {
+        el.classList.add('completed');
+      }
+    });
+    
+    currentStep = step;
+  }
+  
+  function selectOption(step, value, multiple = false) {
+    const stepEl = document.getElementById(`step${step}`);
+    const options = stepEl.querySelectorAll('.option');
+    
+    if (multiple) {
+      // Multi-select for step 3
+      const option = stepEl.querySelector(`[data-value="${value}"]`);
+      if (option.classList.contains('selected')) {
+        option.classList.remove('selected');
+        if (answers[`step${step}`]) {
+          answers[`step${step}`] = answers[`step${step}`].filter(v => v !== value);
+        }
+      } else {
+        option.classList.add('selected');
+        if (!answers[`step${step}`]) answers[`step${step}`] = [];
+        answers[`step${step}`].push(value);
+      }
+    } else {
+      // Single select for steps 1 & 2
+      options.forEach(opt => opt.classList.remove('selected'));
+      stepEl.querySelector(`[data-value="${value}"]`).classList.add('selected');
+      answers[`step${step}`] = value;
+    }
+    
+    // Enable/disable next button
+    const nextBtn = document.getElementById(`nextStep${step}`);
+    if (multiple) {
+      nextBtn.disabled = !answers[`step${step}`] || answers[`step${step}`].length === 0;
+    } else {
+      nextBtn.disabled = !answers[`step${step}`];
+    }
+  }
+  
+  // Event listeners
+  document.addEventListener('DOMContentLoaded', function() {
+    // Step 1 options
+    document.getElementById('step1').querySelectorAll('.option').forEach(option => {
+      option.addEventListener('click', () => {
+        selectOption(1, option.dataset.value);
+      });
+    });
+    
+    // Step 2 options
+    document.getElementById('step2').querySelectorAll('.option').forEach(option => {
+      option.addEventListener('click', () => {
+        selectOption(2, option.dataset.value);
+      });
+    });
+    
+    // Step 3 options (multiple select)
+    document.getElementById('step3').querySelectorAll('.option').forEach(option => {
+      option.addEventListener('click', () => {
+        selectOption(3, option.dataset.value, true);
+      });
+    });
+    
+    // Navigation buttons
+    document.getElementById('nextStep1')?.addEventListener('click', () => showStep(2));
+    document.getElementById('nextStep2')?.addEventListener('click', () => showStep(3));
+    document.getElementById('nextStep3')?.addEventListener('click', () => showStep(4));
+    
+    document.getElementById('backStep2')?.addEventListener('click', () => showStep(1));
+    document.getElementById('backStep3')?.addEventListener('click', () => showStep(2));
+    document.getElementById('backStep4')?.addEventListener('click', () => showStep(3));
+    
+    document.getElementById('restartQuiz')?.addEventListener('click', () => {
+      currentStep = 1;
+      answers = {};
+      document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+      document.querySelectorAll('[id^="nextStep"]').forEach(btn => btn.disabled = true);
+      showStep(1);
+    });
+  });
+</script>

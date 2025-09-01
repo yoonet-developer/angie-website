@@ -1,0 +1,87 @@
+---
+import { getIntakes } from '../lib/sanity'
+
+// Fetch intakes from Sanity
+const intakes = await getIntakes()
+
+// Color mapping for themes
+const colorMap = {
+  purple: {
+    text: 'text-purple-600',
+    bg: 'bg-purple-600',
+    hover: 'hover:bg-purple-700',
+    gradient: 'from-purple-500 to-purple-600'
+  },
+  blue: {
+    text: 'text-blue-600',
+    bg: 'bg-blue-600',
+    hover: 'hover:bg-blue-700',
+    gradient: 'from-blue-500 to-blue-600'
+  },
+  green: {
+    text: 'text-green-600',
+    bg: 'bg-green-600',
+    hover: 'hover:bg-green-700',
+    gradient: 'from-green-500 to-green-600'
+  },
+  red: {
+    text: 'text-red-600',
+    bg: 'bg-red-600',
+    hover: 'hover:bg-red-700',
+    gradient: 'from-red-500 to-red-600'
+  },
+  orange: {
+    text: 'text-orange-600',
+    bg: 'bg-orange-600',
+    hover: 'hover:bg-orange-700',
+    gradient: 'from-orange-500 to-orange-600'
+  }
+}
+---
+
+<div class="max-w-5xl mx-auto mb-16">
+  <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Upcoming Intakes</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {intakes.map(intake => {
+      const colors = colorMap[intake.color] || colorMap.blue
+      const percentage = (intake.slotsBooked / intake.totalSlots) * 100
+      const availableSlots = intake.totalSlots - intake.slotsBooked
+      
+      return (
+        <div class="bg-white border-3 border-black rounded-lg p-6 shadow-[6px_6px_0px_rgba(0,0,0,0.3)] hover:shadow-[8px_8px_0px_rgba(0,0,0,0.3)] transition-all relative">
+          {intake.isNew && (
+            <div class="absolute -top-3 -right-3 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold">NEW</div>
+          )}
+          <h3 class="text-xl font-bold mb-2">{intake.title}</h3>
+          <div class="mb-4">
+            <div class={`text-3xl font-bold ${colors.text}`}>
+              {intake.slotsBooked} / {intake.totalSlots}
+            </div>
+            <p class="text-sm text-gray-600">slots taken</p>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-3 mb-4">
+            <div 
+              class={`bg-gradient-to-r ${colors.gradient} h-3 rounded-full transition-all duration-500`}
+              style={`width: ${percentage}%`}
+            ></div>
+          </div>
+          <p class="text-sm text-gray-700 mb-4">
+            {intake.description || (availableSlots > 10 
+              ? 'Plenty of spots available!' 
+              : availableSlots > 5 
+                ? 'Limited spots remaining' 
+                : availableSlots > 0 
+                  ? 'Only a few spots left!' 
+                  : 'Fully booked!')}
+          </p>
+          <a 
+            href="#socialMediaFormContainer" 
+            class={`block w-full py-3 px-4 ${colors.bg} text-white font-bold rounded-lg ${colors.hover} transition-colors text-center`}
+          >
+            {availableSlots > 0 ? 'Book Here →' : 'Join Waitlist'}
+          </a>
+        </div>
+      )
+    })}
+  </div>
+</div>

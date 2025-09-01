@@ -1,0 +1,73 @@
+---
+import svgNew from '../assets/new.svg'
+
+const testimonials = [
+  { 
+    comment: `"Yoonet has transformed our business operations. Their team seamlessly integrated with ours and improved our efficiency dramatically."`,
+    author: {
+      name: `Sarah Johnson`,
+      pos: `Operations Manager, Little Big Dairy`,
+      pic: `https://images.pexels.com/photos/2709386/pexels-photo-2709386.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`
+    },
+    cls: `rotate-2 -translate-y-10`
+   },
+   { 
+    comment: `"The cultural integration and process replication exceeded our expectations. It's like having an extension of our own team."`,
+    author: {
+      name: `Mark Thompson`,
+      pos: `CEO, The Print Room`,
+      pic: `https://images.pexels.com/photos/2128819/pexels-photo-2128819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`
+    },
+    cls: `-rotate-2 -translate-x-10  z-5`
+   },
+   { 
+    comment: `"With 30+ years experience, Yoonet understands our business needs better than any other outsourcing partner we've worked with."`,
+    author: {
+      name: `Emma Wilson`,
+      pos: `Director, Allied Health Solutions`,
+      pic: `https://images.pexels.com/photos/2169429/pexels-photo-2169429.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`
+    },
+    cls: `rotate-2 translate-x-5 z-5`
+   },
+   { 
+    comment: `"Their dedicated office environment and local NZ management makes all the difference in quality and communication."`,
+    author: {
+      name: `David Chen`,
+      pos: `Founder, Tech Consultancy`,
+      pic: `https://images.pexels.com/photos/3586798/pexels-photo-3586798.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`
+    },
+    cls: `-rotate-2 translate-y-10 md:translate-y-15`
+   },
+]
+---
+
+
+<section>
+    <div class="max-w-4xl mx-auto pb-20 px-10 overflow-hidden">
+      <div class="grid grid-cols-1 md:grid-cols-2">
+        <div class="flex relative">
+          <h1 class="text-3xl">Here's what our clients are saying about our outsourcing solutions</h1>
+          <img src={svgNew.src} alt="arrow" width="40" class="absolute -right-3 md:-right-10 bottom-0" />
+        </div>
+      </div>
+  
+  
+      <div class="grid grid-cols-1 md:grid-cols-2 py-30">
+        {testimonials.map(item => ( 
+          <div class={`flex flex-col gap-3 p-5 pr-15 bg-white border-2 shadow-[6px_6px_0px_rgba(0,0,0,0.3)] ${item.cls}`}>
+            <p>{item.comment}</p>
+            <div class="flex items-center gap-2">
+              <div><div class="size-11 rounded-full border overflow-hidden">
+                  <img src={item.author.pic} alt="" class="w-full h-full object-cover" />
+              </div></div>
+              <div>
+                <h3 class="font-medium">{item.author.name}</h3>
+                <p>{item.author.pos}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+  
+    </div>
+   </section>

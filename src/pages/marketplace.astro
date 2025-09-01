@@ -1,0 +1,302 @@
+---
+import '../styles/global.css'
+import Layout from "../layouts/Layout.astro"
+
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import Button from '../components/Button.astro'
+
+import svgPinkStar from '../assets/pink-star.svg'
+import svgRedStar from '../assets/red-star.svg'
+import svgIdea from '../assets/idea.svg'
+
+const technologies = [
+  { title: 'AI & Machine Learning', desc: 'Intelligent automation and predictive analytics solutions', icon: '🤖', status: 'Available' },
+  { title: 'Cloud Infrastructure', desc: 'Scalable, secure cloud deployment and management', icon: '☁️', status: 'Available' },
+  { title: 'Data Analytics', desc: 'Business intelligence and data visualization platforms', icon: '📊', status: 'Available' },
+  { title: 'CRM Integration', desc: 'Customer relationship management optimization', icon: '👥', status: 'Available' },
+  { title: 'Process Automation', desc: 'Workflow automation and efficiency optimization', icon: '⚡', status: 'Coming Soon' },
+  { title: 'Mobile Solutions', desc: 'Custom mobile applications and responsive platforms', icon: '📱', status: 'Coming Soon' }
+]
+
+const services = [
+  { title: 'Technology Consultation', desc: 'Expert guidance on digital transformation strategies', icon: '💡' },
+  { title: 'Implementation Support', desc: 'End-to-end deployment and integration services', icon: '🔧' },
+  { title: 'Training & Onboarding', desc: 'Comprehensive staff training and change management', icon: '🎓' },
+  { title: 'Ongoing Maintenance', desc: 'Continuous support, updates, and optimization', icon: '🛠️' }
+]
+
+const benefits = [
+  { title: 'Cutting-Edge Innovation', desc: 'Access to latest technologies and industry best practices', icon: '🚀' },
+  { title: 'Streamlined Operations', desc: 'Integrated solutions that enhance business efficiency', icon: '⚡' },
+  { title: 'Scalable Growth', desc: 'Technology that grows with your business needs', icon: '📈' },
+  { title: 'Competitive Advantage', desc: 'Stay ahead with innovative solutions and strategies', icon: '🏆' }
+]
+---
+
+<Layout>
+  <Header />
+  
+  <!-- Hero Section -->
+  <section class="relative px-3 md:px-10 py-20 overflow-hidden bg-gradient-to-br from-orange-50 to-purple-50 w-full">
+    <div class="max-w-6xl mx-auto w-full px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="text-4xl">🛒</div>
+            <span class="text-lg font-semibold text-orange-600">Technology Marketplace</span>
+          </div>
+          <h1 class="text-5xl md:text-6xl font-bold mb-6">
+            <span>Cutting-Edge Technologies</span>
+            <span class="relative block">
+              <span class="absolute bg-[var(--yellow)] w-full h-[50%] left-0 bottom-0 z-1"></span>
+              <span class="relative z-5">That Drive Innovation</span>
+            </span>
+          </h1>
+          <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+            Connect your business with innovative services and technologies designed to streamline operations, 
+            accelerate growth, and position you at the forefront of your industry.
+          </p>
+          <Button text="Explore Technologies" link="#technologies" target="_self" />
+        </div>
+        
+        <div class="relative">
+          <img src={svgRedStar.src} width="80" alt="star" class="absolute -top-10 -right-8 z-10 hidden md:block" />
+          <img src={svgIdea.src} width="60" alt="idea" class="absolute bottom-20 -left-8 z-10 hidden md:block" />
+          
+          <div class="bg-white p-8 border-3 shadow-[8px_8px_0px_rgba(0,0,0,0.3)] transform rotate-2">
+            <h3 class="text-2xl font-bold mb-6 text-center">Innovation Hub</h3>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-orange-50 p-4 rounded-lg text-center">
+                <div class="text-3xl mb-2">🤖</div>
+                <div class="font-bold text-orange-600">AI Solutions</div>
+                <div class="text-sm text-gray-600">Smart Automation</div>
+              </div>
+              <div class="bg-blue-50 p-4 rounded-lg text-center">
+                <div class="text-3xl mb-2">☁️</div>
+                <div class="font-bold text-blue-600">Cloud Tech</div>
+                <div class="text-sm text-gray-600">Scalable Infrastructure</div>
+              </div>
+              <div class="bg-green-50 p-4 rounded-lg text-center">
+                <div class="text-3xl mb-2">📊</div>
+                <div class="font-bold text-green-600">Analytics</div>
+                <div class="text-sm text-gray-600">Data Insights</div>
+              </div>
+              <div class="bg-purple-50 p-4 rounded-lg text-center">
+                <div class="text-3xl mb-2">⚡</div>
+                <div class="font-bold text-purple-600">Automation</div>
+                <div class="text-sm text-gray-600">Process Optimization</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img src={svgPinkStar.src} alt="star" width="50" class="absolute bottom-10 left-10 hidden md:block" />
+  </section>
+
+  <!-- Technologies Section -->
+  <section id="technologies" class="py-20 px-3 md:px-10">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Available Technologies</h2>
+        <p class="text-xl text-gray-600">Innovative solutions ready to transform your business</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {technologies.map((tech, index) => (
+          <div class={`bg-white p-8 border-2 shadow-[6px_6px_0px_rgba(0,0,0,0.3)] rounded-lg transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0 hover:scale-105 transition-all duration-300 relative overflow-hidden`}>
+            <div class={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-bold ${tech.status === 'Available' ? 'bg-green-100 text-green-600' : 'bg-yellow-100 text-yellow-600'}`}>
+              {tech.status}
+            </div>
+            <div class="text-5xl mb-4">{tech.icon}</div>
+            <h3 class="text-xl font-bold mb-3 text-orange-600">{tech.title}</h3>
+            <p class="text-gray-700">{tech.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-20 px-3 md:px-10 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Complete Implementation Services</h2>
+        <p class="text-xl text-gray-600">End-to-end support from concept to deployment</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {services.map((service, index) => (
+          <div class={`bg-white p-6 rounded-lg border-2 shadow-[4px_4px_0px_rgba(0,0,0,0.3)] transform ${index % 2 === 0 ? '-rotate-1' : 'rotate-1'} hover:rotate-0 transition-all duration-300`}>
+            <div class="text-4xl mb-4">{service.icon}</div>
+            <h3 class="text-lg font-bold mb-2 text-purple-600">{service.title}</h3>
+            <p class="text-gray-600 text-sm">{service.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Innovation Focus -->
+  <section class="py-20 px-3 md:px-10 bg-gradient-to-br from-orange-600 to-purple-600 text-white relative overflow-hidden w-full">
+    <img src={svgPinkStar.src} alt="star" width="100" class="absolute -top-12 right-20 opacity-20 hidden md:block" />
+    
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Innovation-Driven Solutions</h2>
+        <p class="text-xl opacity-90">Where technology meets practical business application</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h3 class="text-3xl font-bold mb-8">Technology Integration Process</h3>
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-white/20 backdrop-blur rounded-full flex items-center justify-center font-bold">1</div>
+              <div>
+                <h4 class="text-xl font-bold mb-2">Discovery & Assessment</h4>
+                <p class="opacity-90">Analyze your current systems and identify optimization opportunities</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-white/20 backdrop-blur rounded-full flex items-center justify-center font-bold">2</div>
+              <div>
+                <h4 class="text-xl font-bold mb-2">Solution Design</h4>
+                <p class="opacity-90">Custom technology stack tailored to your business requirements</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-white/20 backdrop-blur rounded-full flex items-center justify-center font-bold">3</div>
+              <div>
+                <h4 class="text-xl font-bold mb-2">Implementation</h4>
+                <p class="opacity-90">Expert deployment with minimal business disruption</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-white/20 backdrop-blur rounded-full flex items-center justify-center font-bold">4</div>
+              <div>
+                <h4 class="text-xl font-bold mb-2">Optimization</h4>
+                <p class="opacity-90">Continuous refinement and performance enhancement</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur p-8 rounded-2xl border border-white/20">
+          <h3 class="text-2xl font-bold mb-6">Technology Impact Metrics</h3>
+          <div class="space-y-4">
+            <div class="flex justify-between items-center">
+              <span>Process Efficiency</span>
+              <span class="font-bold">+75%</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span>Cost Reduction</span>
+              <span class="font-bold">-45%</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span>Data Accuracy</span>
+              <span class="font-bold">+90%</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span>Decision Speed</span>
+              <span class="font-bold">+65%</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span>Innovation Capacity</span>
+              <span class="font-bold">+85%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-20 px-3 md:px-10">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Transform Your Business</h2>
+        <p class="text-xl text-gray-600">The competitive advantages of marketplace technologies</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {benefits.map((benefit, index) => (
+          <div class={`bg-white p-8 rounded-lg border-2 shadow-[6px_6px_0px_rgba(0,0,0,0.3)] transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0 transition-all duration-300`}>
+            <div class="text-5xl mb-4">{benefit.icon}</div>
+            <h3 class="text-xl font-bold mb-3 text-orange-600">{benefit.title}</h3>
+            <p class="text-gray-700">{benefit.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Coming Soon Technologies -->
+  <section class="py-20 px-3 md:px-10 bg-gradient-to-br from-purple-50 to-orange-50">
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-8">Innovation Pipeline</h2>
+      <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
+        Exciting technologies and services coming soon to help you stay at the forefront of your industry
+      </p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-lg border-2 border-dashed border-gray-300 opacity-75">
+          <div class="text-5xl mb-4">🔮</div>
+          <h3 class="text-xl font-bold mb-3 text-purple-600">Predictive Analytics</h3>
+          <div class="text-sm bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full inline-block">Coming Q2 2025</div>
+        </div>
+        
+        <div class="bg-white p-8 rounded-lg border-2 border-dashed border-gray-300 opacity-75">
+          <div class="text-5xl mb-4">🌐</div>
+          <h3 class="text-xl font-bold mb-3 text-blue-600">IoT Integration</h3>
+          <div class="text-sm bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full inline-block">Coming Q3 2025</div>
+        </div>
+        
+        <div class="bg-white p-8 rounded-lg border-2 border-dashed border-gray-300 opacity-75">
+          <div class="text-5xl mb-4">🎯</div>
+          <h3 class="text-xl font-bold mb-3 text-green-600">Custom AI Models</h3>
+          <div class="text-sm bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full inline-block">Coming Q4 2025</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 px-3 md:px-10 bg-black text-white relative overflow-hidden w-full">
+    <img src={svgRedStar.src} alt="star" width="120" class="absolute -top-16 -left-16 opacity-20 hidden md:block" />
+    <img src={svgPinkStar.src} alt="star" width="100" class="absolute -bottom-12 -right-12 opacity-20 hidden md:block" />
+    
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-8">Ready to Innovate?</h2>
+      <p class="text-xl mb-12 opacity-90">
+        Transform your business with cutting-edge technologies and innovative services 
+        designed to streamline operations and accelerate growth.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <Button text="Explore Technologies" link="/#quiz" target="_self" />
+        <div class="bg-white/10 backdrop-blur p-4 rounded-lg border border-white/20">
+          <div class="text-lg">🚀 Innovation consultation available</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .transform:hover {
+    transform: rotate(0deg) scale(1.02) !important;
+  }
+  
+  @media (max-width: 768px) {
+    .rotate-1, .-rotate-1, .rotate-2 {
+      transform: rotate(0deg) !important;
+    }
+  }
+</style>

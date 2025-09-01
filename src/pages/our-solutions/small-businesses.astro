@@ -1,0 +1,284 @@
+---
+import '../../styles/global.css'
+import Layout from "../../layouts/Layout.astro"
+
+import Header from '../../components/Header.astro'
+import Footer from '../../components/Footer.astro'
+import Button from '../../components/Button.astro'
+
+import svgPinkStar from '../../assets/pink-star.svg'
+import svgRedStar from '../../assets/red-star.svg'
+import svgIdea from '../../assets/idea.svg'
+
+const services = [
+  { title: 'Route Planning Optimization', desc: 'Maximize service efficiency and minimize travel time', icon: '🗺️' },
+  { title: 'Administrative Support', desc: 'Comprehensive back-office operations management', icon: '📋' },
+  { title: 'Quoting & Invoicing', desc: 'Professional proposal and billing management', icon: '💰' },
+  { title: 'Customer Support', desc: 'Professional client communication and service', icon: '📞' },
+  { title: 'Calendar Management', desc: 'Efficient scheduling and appointment coordination', icon: '📅' },
+  { title: 'CRM & Data Management', desc: 'Client relationship and database optimization', icon: '💾' },
+  { title: 'Inventory Management', desc: 'Stock tracking and procurement coordination', icon: '📦' },
+  { title: 'Payment Follow-ups', desc: 'Healthy cash flow through systematic collections', icon: '💳' }
+]
+
+const benefits = [
+  { title: 'Focus on Core Services', desc: 'Spend more time delivering quality service to clients', icon: '🎯' },
+  { title: 'Operational Efficiency', desc: 'Streamlined processes that boost productivity', icon: '⚡' },
+  { title: 'Cost Optimization', desc: 'Reduce overhead while maintaining service quality', icon: '💰' },
+  { title: 'Scalable Growth', desc: 'Support that grows with your business needs', icon: '📈' }
+]
+
+const businessTypes = [
+  { name: 'Service Technicians', desc: 'HVAC, plumbing, electrical, and maintenance services', icon: '🔧' },
+  { name: 'Home Services', desc: 'Cleaning, landscaping, and property maintenance', icon: '🏠' },
+  { name: 'Healthcare Services', desc: 'Mobile health, therapy, and wellness providers', icon: '⚕️' },
+  { name: 'Professional Services', desc: 'Consulting, accounting, and business services', icon: '💼' },
+  { name: 'Delivery & Logistics', desc: 'Transportation and delivery service providers', icon: '🚛' },
+  { name: 'Retail & E-commerce', desc: 'Online and physical retail operations', icon: '🛒' }
+]
+---
+
+<Layout>
+  <Header />
+  
+  <!-- Hero Section -->
+  <section class="relative px-3 md:px-10 py-20 overflow-hidden bg-gradient-to-br from-green-50 to-blue-50 w-full">
+    <div class="max-w-6xl mx-auto w-full px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="text-4xl">🏪</div>
+            <span class="text-lg font-semibold text-green-600">Small Business Solutions</span>
+          </div>
+          <h1 class="text-5xl md:text-6xl font-bold mb-6">
+            <span>Operational Support That</span>
+            <span class="relative block">
+              <span class="absolute bg-[var(--yellow)] w-full h-[50%] left-0 bottom-0 z-1"></span>
+              <span class="relative z-5">Drives Growth</span>
+            </span>
+          </h1>
+          <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+            Comprehensive support services that help small businesses optimize efficiency, 
+            reduce costs, and focus on what they do best - delivering exceptional service to their customers.
+          </p>
+          <Button text="Optimize Your Operations" link="/#quiz" target="_self" />
+        </div>
+        
+        <div class="relative">
+          <img src={svgRedStar.src} width="80" alt="star" class="absolute -top-10 -right-8 z-10 hidden md:block" />
+          <img src={svgIdea.src} width="60" alt="idea" class="absolute bottom-20 -left-8 z-10 hidden md:block" />
+          
+          <div class="bg-white p-8 border-3 shadow-[8px_8px_0px_rgba(0,0,0,0.3)] transform -rotate-2">
+            <h3 class="text-2xl font-bold mb-6 text-center">Business Impact</h3>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-green-50 p-4 rounded-lg text-center">
+                <div class="text-2xl font-bold text-green-600">60%</div>
+                <div class="text-sm">Time Savings</div>
+              </div>
+              <div class="bg-blue-50 p-4 rounded-lg text-center">
+                <div class="text-2xl font-bold text-blue-600">40%</div>
+                <div class="text-sm">Cost Reduction</div>
+              </div>
+              <div class="bg-purple-50 p-4 rounded-lg text-center">
+                <div class="text-2xl font-bold text-purple-600">80%</div>
+                <div class="text-sm">Admin Relief</div>
+              </div>
+              <div class="bg-orange-50 p-4 rounded-lg text-center">
+                <div class="text-2xl font-bold text-orange-600">24/7</div>
+                <div class="text-sm">Support</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img src={svgPinkStar.src} alt="star" width="50" class="absolute bottom-10 left-10 hidden md:block" />
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-20 px-3 md:px-10">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Comprehensive Business Support</h2>
+        <p class="text-xl text-gray-600">End-to-end operational services tailored for small businesses</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {services.map((service, index) => (
+          <div class={`bg-white p-6 border-2 shadow-[4px_4px_0px_rgba(0,0,0,0.3)] rounded-lg transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0 hover:scale-105 transition-all duration-300`}>
+            <div class="text-4xl mb-4">{service.icon}</div>
+            <h3 class="text-lg font-bold mb-2 text-green-600">{service.title}</h3>
+            <p class="text-gray-600 text-sm">{service.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Business Types -->
+  <section class="py-20 px-3 md:px-10 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Industries We Serve</h2>
+        <p class="text-xl text-gray-600">Specialized support for diverse small business sectors</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {businessTypes.map((type, index) => (
+          <div class={`bg-white p-8 border-2 shadow-[6px_6px_0px_rgba(0,0,0,0.3)] rounded-lg transform ${index % 2 === 0 ? '-rotate-1' : 'rotate-1'} hover:rotate-0 transition-all duration-300`}>
+            <div class="text-5xl mb-4">{type.icon}</div>
+            <h3 class="text-xl font-bold mb-3 text-blue-600">{type.name}</h3>
+            <p class="text-gray-700">{type.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Route Optimization Focus -->
+  <section class="py-20 px-3 md:px-10 bg-gradient-to-br from-blue-600 to-green-600 text-white relative overflow-hidden">
+    <img src={svgPinkStar.src} alt="star" width="100" class="absolute -top-12 right-20 opacity-20" />
+    
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="text-4xl md:text-5xl font-bold mb-8">Route Planning Excellence</h2>
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-white/20 backdrop-blur rounded-full flex items-center justify-center">🗺️</div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Smart Route Optimization</h3>
+                <p class="opacity-90">Advanced algorithms to minimize travel time and maximize service efficiency</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-white/20 backdrop-blur rounded-full flex items-center justify-center">⏰</div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Time Management</h3>
+                <p class="opacity-90">More time serving clients, less time traveling between locations</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-white/20 backdrop-blur rounded-full flex items-center justify-center">💰</div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Cost Reduction</h3>
+                <p class="opacity-90">Lower fuel costs, vehicle wear, and operational expenses</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur p-8 rounded-2xl border border-white/20">
+          <h3 class="text-2xl font-bold mb-6">Efficiency Gains</h3>
+          <div class="space-y-4">
+            <div class="flex justify-between items-center">
+              <span>Daily Routes Optimized</span>
+              <span class="font-bold">+35%</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span>Travel Time Reduced</span>
+              <span class="font-bold">-45%</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span>Fuel Costs Saved</span>
+              <span class="font-bold">-30%</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span>Client Satisfaction</span>
+              <span class="font-bold">+50%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-20 px-3 md:px-10">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Why Small Businesses Choose Us</h2>
+        <p class="text-xl text-gray-600">Tangible benefits that transform your business operations</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {benefits.map((benefit, index) => (
+          <div class={`bg-white p-8 rounded-lg border-2 shadow-[6px_6px_0px_rgba(0,0,0,0.3)] transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0 transition-all duration-300`}>
+            <div class="text-5xl mb-4">{benefit.icon}</div>
+            <h3 class="text-xl font-bold mb-3 text-green-600">{benefit.title}</h3>
+            <p class="text-gray-700">{benefit.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Cash Flow Management -->
+  <section class="py-20 px-3 md:px-10 bg-gradient-to-br from-green-500 to-blue-500 text-white relative">
+    <img src={svgRedStar.src} alt="star" width="80" class="absolute bottom-20 right-20 opacity-20" />
+    
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-8">Healthy Cash Flow Management</h2>
+      <p class="text-xl mb-12 opacity-90 max-w-3xl mx-auto">
+        Professional quoting, invoicing, and payment follow-up services that ensure consistent cash flow 
+        and reduce time spent on administrative tasks.
+      </p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white/10 backdrop-blur p-8 rounded-lg border border-white/20">
+          <div class="text-4xl mb-4">📝</div>
+          <h3 class="text-xl font-bold mb-3">Professional Quoting</h3>
+          <p class="opacity-90">Detailed, accurate quotes that win more business</p>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur p-8 rounded-lg border border-white/20">
+          <div class="text-4xl mb-4">💳</div>
+          <h3 class="text-xl font-bold mb-3">Systematic Invoicing</h3>
+          <p class="opacity-90">Timely, professional billing that accelerates payments</p>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur p-8 rounded-lg border border-white/20">
+          <div class="text-4xl mb-4">📞</div>
+          <h3 class="text-xl font-bold mb-3">Payment Follow-ups</h3>
+          <p class="opacity-90">Persistent but professional collection processes</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 px-3 md:px-10 bg-black text-white relative overflow-hidden">
+    <img src={svgPinkStar.src} alt="star" width="120" class="absolute -top-16 -left-16 opacity-20" />
+    
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-8">Ready to Scale Your Business?</h2>
+      <p class="text-xl mb-12 opacity-90">
+        Join hundreds of small businesses that have transformed their operations 
+        and accelerated growth with our comprehensive support services.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <Button text="Start Your Transformation" link="/#quiz" target="_self" />
+        <div class="bg-white/10 backdrop-blur p-4 rounded-lg border border-white/20">
+          <div class="text-lg">🚀 Operational efficiency starts here</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .transform:hover {
+    transform: rotate(0deg) scale(1.02) !important;
+  }
+  
+  @media (max-width: 768px) {
+    .rotate-1, .-rotate-1, .-rotate-2 {
+      transform: rotate(0deg) !important;
+    }
+  }
+</style>

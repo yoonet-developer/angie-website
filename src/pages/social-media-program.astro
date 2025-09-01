@@ -1,0 +1,440 @@
+---
+import '../styles/global.css'
+import Layout from "../layouts/Layout.astro"
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import SocialMediaForm from '../components/SocialMediaForm.astro'
+
+import svgPinkStar from '../assets/pink-star.svg'
+import svgRedStar from '../assets/red-star.svg'
+---
+
+<Layout>
+  <Header />
+
+  <!-- Hero Section -->
+  <section class="relative px-3 md:px-10 py-20 overflow-hidden bg-gradient-to-br from-purple-50 to-blue-50 w-full">
+    <div class="max-w-6xl mx-auto w-full px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="text-4xl">📱</div>
+            <span class="text-lg font-semibold text-purple-600">Social Media Programme</span>
+          </div>
+          <h1 class="text-5xl md:text-6xl font-bold mb-6">
+            <span>Yoonet and City of Balanga</span>
+            <span class="relative block">
+              <span class="absolute bg-[var(--yellow)] w-full h-[50%] left-0 bottom-0 z-1"></span>
+              <span class="relative z-5">Partnership</span>
+            </span>
+          </h1>
+          <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+            Providing the talent to power your business through government-subsidised social media training
+          </p>
+        </div>
+        
+        <div class="relative">
+          <img src={svgRedStar.src} width="80" alt="star" class="absolute -top-10 -right-8 z-10 hidden md:block" />
+          
+          <div class="bg-white p-8 border-3 shadow-[8px_8px_0px_rgba(0,0,0,0.3)] rounded-lg transform -rotate-2">
+            <h3 class="text-2xl font-bold mb-6 text-center text-purple-600">Programme Details</h3>
+            <div class="space-y-4">
+              <div class="bg-red-50 p-4 rounded-lg border text-center">
+                <div class="text-2xl font-bold text-red-600">🚨 ONLY 6 POSITIONS</div>
+                <div class="text-sm text-red-700">First intake filling fast</div>
+              </div>
+              <div class="bg-purple-50 p-4 rounded-lg border">
+                <div class="font-bold text-purple-700">Today: ₱500 Deposit</div>
+                <div class="text-sm text-purple-600">Secures your position</div>
+              </div>
+              <div class="bg-blue-50 p-4 rounded-lg border">
+                <div class="font-bold text-blue-700">November - March: Only $950/month</div>
+                <div class="text-sm text-blue-600">Training period special rate</div>
+              </div>
+              <div class="bg-green-50 p-4 rounded-lg border">
+                <div class="font-bold text-green-700">Thereafter: Normal rates</div>
+                <div class="text-sm text-green-600">Starting ₱22,000/month + management fees</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img src={svgPinkStar.src} alt="star" width="50" class="absolute bottom-10 left-10 hidden md:block" />
+  </section>
+
+  <!-- Programme Overview -->
+  <section class="py-20 px-3 md:px-10">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Transform Lives, Transform Business</h2>
+        <p class="text-xl text-gray-600">A unique partnership creating opportunities for graduates and businesses alike</p>
+      </div>
+
+      <div class="bg-white p-12 border-2 shadow-[8px_8px_0px_rgba(0,0,0,0.3)] rounded-lg max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12">
+          <!-- For Graduates -->
+          <div>
+            <h3 class="text-2xl font-bold mb-6 text-purple-600 flex items-center gap-3">
+              🎓 Fresh Graduates
+            </h3>
+            
+            <div class="mb-6">
+              <div class="text-3xl font-bold text-gray-800">₱500 Deposit</div>
+              <div class="text-gray-600">Secures your training position</div>
+            </div>
+            
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-start gap-3">
+                <span class="text-green-600 font-bold">✓</span>
+                <span><strong>Guaranteed job placement</strong> with international clients</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-green-600 font-bold">✓</span>
+                <span><strong>Master cutting-edge AI tools</strong> (ChatGPT, Canva AI, Hootsuite)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-green-600 font-bold">✓</span>
+                <span><strong>Government-subsidised training</strong> worth thousands</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-green-600 font-bold">✓</span>
+                <span><strong>Earn whilst you learn</strong> - full Philippine salary from day one</span>
+              </li>
+            </ul>
+            
+            <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
+              <p class="italic text-purple-700">
+                "I went from unemployed graduate to social media professional earning ₱45,000/month in 6 months!" - Maria Santos
+              </p>
+            </div>
+          </div>
+
+          <!-- For Businesses -->
+          <div>
+            <h3 class="text-2xl font-bold mb-6 text-blue-600 flex items-center gap-3">
+              💼 Forward-Thinking Businesses
+            </h3>
+            
+            <div class="mb-6">
+              <div class="text-3xl font-bold text-gray-800">$950/month</div>
+              <div class="text-gray-600">November - March training period</div>
+              <div class="text-sm text-blue-600 mt-2">Thereafter: ₱22,000/month + management fees</div>
+            </div>
+            
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-start gap-3">
+                <span class="text-green-600 font-bold">✓</span>
+                <span><strong>Dedicated social media professional</strong> (40+ hours/week)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-green-600 font-bold">✓</span>
+                <span><strong>Fresh graduate energy & creativity</strong> you can't get elsewhere</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-green-600 font-bold">✓</span>
+                <span><strong>Latest AI automation & tools</strong> included</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-green-600 font-bold">✓</span>
+                <span><strong>Government tax incentives</strong> for supporting local employment</span>
+              </li>
+            </ul>
+            
+            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+              <p class="italic text-blue-700">
+                "Our social media engagement tripled in 3 months. Plus we're genuinely helping a bright young person build their career!" - James Mitchell, CEO
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="text-center mt-12">
+          <a href="#form" class="bg-purple-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-purple-700 transition-colors inline-block">
+            Apply for the Programme →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section how-it-works">
+    <div class="container">
+      <h2 class="section-title">How It Works</h2>
+      
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h4>Apply & Match</h4>
+          <p>Graduates apply with $500 deposit. Businesses book free consultation. We match perfect pairs.</p>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">2</div>
+          <h4>Intensive Training</h4>
+          <p>6 months government-subsidised training on premium AI tools, strategy, and live client projects.</p>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">3</div>
+          <h4>Ongoing Success</h4>
+          <p>Graduate becomes your dedicated social media professional. Your brand grows. Their career flourishes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="container">
+      <h2 class="section-title">Programme Impact</h2>
+      
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-number">95%</div>
+          <div class="stat-label">Graduate Employment Rate</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">180%</div>
+          <div class="stat-label">Average Engagement Increase</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">₱2.8M</div>
+          <div class="stat-label">Annual Economic Impact</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">30%</div>
+          <div class="stat-label">Discount vs Standard Rates</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Application Form -->
+  <SocialMediaForm />
+
+  <!-- FAQ Section -->
+  <section class="faq">
+    <div class="container">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      
+      <div class="faq-content">
+        <div class="faq-item">
+          <div class="faq-question">Why only 6 positions in the first intake?</div>
+          <div class="faq-answer">We're committed to providing exceptional mentorship and ensuring every graduate succeeds. Small cohorts allow for personalised attention and guaranteed job placement.</div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">What makes this different from hiring a regular social media manager?</div>
+          <div class="faq-answer">You get fresh graduate energy, latest AI technology training, government subsidies keeping costs low, plus the satisfaction of directly contributing to youth employment. Our graduates bring creativity that experienced agencies often lack.</div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">Is the $500 deposit refundable for graduates?</div>
+          <div class="faq-answer">Yes! The deposit is fully refundable upon successful programme completion and job placement.</div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">What happens after the 18-month programme period?</div>
+          <div class="faq-answer">Your graduate can continue as a full-time employee at standard market rates, or you can join our next programme cycle with a new graduate. Most clients choose to retain their trained professional.</div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">What government support is included?</div>
+          <div class="faq-answer">Training costs are subsidised through Balanga City tax incentives, employment programmes provide additional support, and businesses may qualify for further tax benefits for supporting local skills development.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-20 px-3 md:px-10 bg-black text-white relative overflow-hidden w-full">
+    <img src={svgRedStar.src} alt="star" width="120" class="absolute -top-16 -left-16 opacity-20 hidden md:block" />
+    <img src={svgPinkStar.src} alt="star" width="100" class="absolute -bottom-12 -right-12 opacity-20 hidden md:block" />
+    
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-8">Ready to Transform Your Future?</h2>
+      <p class="text-xl mb-12 opacity-90">
+        Join the Yoonet and City of Balanga partnership. Only 6 positions available in our first intake.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-6 justify-center mb-12">
+        <a href="#form" class="bg-[var(--yellow)] text-black px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-400 transition-colors">
+          Apply for Programme
+        </a>
+        <div class="bg-white/10 backdrop-blur p-4 rounded-lg border border-white/20">
+          <div class="text-lg">🤝 Partnership programme now open</div>
+        </div>
+      </div>
+      
+      <div class="text-center opacity-90">
+        <p class="mb-2">📧 program@yoonet.com.ph</p>
+        <p class="mb-2">📞 +63 47 XXX-XXXX</p>
+        <p>🏢 Yoonet Training Centre, Balanga, Bataan, Philippines</p>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .section {
+    padding: 80px 0;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #2c3e50;
+  }
+  
+  .how-it-works {
+    background: #f8f9fa;
+  }
+  
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 50px;
+  }
+  
+  .step {
+    text-align: center;
+  }
+  
+  .step-number {
+    background: #667eea;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 auto 20px;
+  }
+  
+  .step h4 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #2c3e50;
+  }
+  
+  .stats {
+    background: #f8f9fa;
+    padding: 60px 0;
+    text-align: center;
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+  
+  .stat {
+    padding: 20px;
+  }
+  
+  .stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #667eea;
+  }
+  
+  .stat-label {
+    font-size: 1.1rem;
+    color: #666;
+    margin-top: 10px;
+  }
+  
+  .faq {
+    background: #2c3e50;
+    color: white;
+    padding: 80px 0;
+  }
+  
+  .faq .section-title {
+    color: white;
+  }
+  
+  .faq-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .faq-item {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #34495e;
+    padding-bottom: 20px;
+  }
+  
+  .faq-question {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .faq-answer {
+    opacity: 0.9;
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 768px) {
+    .steps-grid { grid-template-columns: 1fr; }
+    .section-title { font-size: 2rem; }
+  }
+</style>
+
+<script>
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Simple scroll animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.card, .stat, .step').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  });
+</script>

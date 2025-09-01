@@ -1,0 +1,313 @@
+---
+import '../styles/global.css'
+import Layout from "../layouts/Layout.astro"
+
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import Button from '../components/Button.astro'
+
+import svgPinkStar from '../assets/pink-star.svg'
+import svgRedStar from '../assets/red-star.svg'
+import svgIdea from '../assets/idea.svg'
+import svgheroContent from '../assets/hero-content.svg'
+
+const solutions = [
+  {
+    title: 'Allied Health',
+    desc: 'Specialized virtual support for allied health clinics with deep Cliniko expertise and healthcare compliance',
+    icon: '🏥',
+    link: '/our-solutions/allied-health',
+    features: ['Cliniko Workflow Management', 'Healthcare Compliance', 'Patient Recalls & Reactivation', '24/7 Monitored Environment'],
+    color: 'from-blue-500 to-blue-600'
+  },
+  {
+    title: 'Small Businesses',
+    desc: 'Comprehensive operational support to help small businesses optimize efficiency and focus on core services',
+    icon: '🏪',
+    link: '/our-solutions/small-businesses', 
+    features: ['Route Planning Optimization', 'Administrative Support', 'CRM & Data Management', 'Inventory Management'],
+    color: 'from-green-500 to-green-600'
+  },
+  {
+    title: 'Consultancy Businesses',
+    desc: 'Tailored solutions for consultants to optimize operations, improve productivity, and provide crucial administrative support',
+    icon: '💼',
+    link: '/our-solutions/consultancy-businesses',
+    features: ['Project Management', 'Digital Presence Management', 'Billing & Travel Arrangements', 'Social Media Content'],
+    color: 'from-purple-500 to-purple-600'
+  },
+  {
+    title: 'Marketplace Solutions',
+    desc: 'Cutting-edge technologies and innovative services to streamline operations and support business growth',
+    icon: '🛒',
+    link: '/marketplace',
+    features: ['Technology Integration', 'Process Automation', 'Growth Acceleration', 'Innovation Support'],
+    color: 'from-orange-500 to-orange-600'
+  }
+]
+
+const benefits = [
+  {
+    title: 'Bespoke Solutions',
+    desc: 'Every solution is designed specifically for your industry and business needs',
+    icon: '🎯'
+  },
+  {
+    title: 'Enhanced Efficiency',
+    desc: 'Streamlined processes that boost productivity and operational effectiveness',
+    icon: '⚡'
+  },
+  {
+    title: 'Accelerated Growth',
+    desc: 'Solutions that scale with your business and drive sustainable expansion',
+    icon: '📈'
+  },
+  {
+    title: 'Proven Success',
+    desc: 'Track record of delivering measurable results across diverse industries',
+    icon: '🏆'
+  }
+]
+---
+
+<Layout>
+  <Header />
+  
+  <!-- Hero Section -->
+  <section class="relative px-3 md:px-10 py-20 overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
+        <div>
+          <img src={svgheroContent.src} alt="Our Solutions" width="100" class="mb-6" />
+          <h1 class="text-5xl md:text-6xl font-bold mb-6">
+            <span>Solutions Designed</span>
+            <span class="relative block">
+              <span class="absolute bg-[var(--yellow)] w-full h-[50%] left-0 bottom-0 z-1"></span>
+              <span class="relative z-5">For Your Success</span>
+            </span>
+          </h1>
+          <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+            Bespoke solutions crafted specifically for your industry, designed to enhance efficiency, 
+            drive growth, and accelerate your business success with the power of Filipino talent.
+          </p>
+          <Button text="Explore Solutions" link="#solutions" target="_self" />
+        </div>
+        
+        <div class="relative">
+          <img src={svgRedStar.src} width="80" alt="star" class="absolute -top-10 -right-8 z-10" />
+          <img src={svgIdea.src} width="60" alt="idea" class="absolute bottom-32 -left-8 z-10" />   
+          
+          <div class="bg-white p-8 border-3 shadow-[8px_8px_0px_rgba(0,0,0,0.3)] transform -rotate-2">
+            <div class="text-center">
+              <div class="text-6xl mb-6">🚀</div>
+              <h3 class="text-2xl font-bold mb-6">Industry-Focused Expertise</h3>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="bg-blue-50 p-4 rounded-lg">
+                  <div class="text-3xl mb-2">🏥</div>
+                  <div class="font-bold text-blue-600">Allied Health</div>
+                  <div class="text-sm text-gray-600">Healthcare Specialists</div>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg">
+                  <div class="text-3xl mb-2">🏪</div>
+                  <div class="font-bold text-green-600">Small Business</div>
+                  <div class="text-sm text-gray-600">Operational Support</div>
+                </div>
+                <div class="bg-purple-50 p-4 rounded-lg">
+                  <div class="text-3xl mb-2">💼</div>
+                  <div class="font-bold text-purple-600">Consultancy</div>
+                  <div class="text-sm text-gray-600">Professional Services</div>
+                </div>
+                <div class="bg-orange-50 p-4 rounded-lg">
+                  <div class="text-3xl mb-2">🛒</div>
+                  <div class="font-bold text-orange-600">Marketplace</div>
+                  <div class="text-sm text-gray-600">Tech Solutions</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <img src={svgPinkStar.src} alt="star" width="50" class="absolute bottom-10 left-10" />
+  </section>
+
+  <!-- Solutions Overview -->
+  <section id="solutions" class="py-20 px-3 md:px-10">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Industry-Specific Solutions</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Each solution is carefully crafted for your industry's unique challenges and opportunities
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {solutions.map((solution, index) => (
+          <div class={`relative overflow-hidden rounded-2xl transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0 hover:scale-105 transition-all duration-300`}>
+            <div class={`absolute inset-0 bg-gradient-to-br ${solution.color} opacity-90`}></div>
+            <div class="relative p-8 text-white">
+              <div class="flex items-start gap-4 mb-6">
+                <div class="text-5xl">{solution.icon}</div>
+                <div>
+                  <h3 class="text-2xl font-bold mb-2">{solution.title}</h3>
+                  <p class="opacity-90 leading-relaxed">{solution.desc}</p>
+                </div>
+              </div>
+              
+              <div class="mb-6">
+                <h4 class="font-bold mb-3">Key Features:</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  {solution.features.map(feature => (
+                    <div class="flex items-center gap-2 text-sm">
+                      <div class="w-2 h-2 bg-white rounded-full"></div>
+                      <span>{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              <a href={solution.link} class="inline-flex items-center gap-2 bg-white/20 backdrop-blur px-6 py-3 rounded-full font-bold hover:bg-white/30 transition-all">
+                Learn More <span>→</span>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Our Solutions -->
+  <section class="py-20 px-3 md:px-10 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Why Our Solutions Work</h2>
+        <p class="text-xl text-gray-600">The key benefits that make our approach successful</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {benefits.map((benefit, index) => (
+          <div class={`bg-white p-8 rounded-lg border-2 shadow-[4px_4px_0px_rgba(0,0,0,0.3)] transform hover:-rotate-1 transition-all duration-300 ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'}`}>
+            <div class="text-5xl mb-4">{benefit.icon}</div>
+            <h3 class="text-xl font-bold mb-3 text-blue-600">{benefit.title}</h3>
+            <p class="text-gray-700 leading-relaxed">{benefit.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Overview -->
+  <section class="py-20 px-3 md:px-10">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="text-4xl md:text-5xl font-bold mb-8">How We Deliver Solutions</h2>
+          
+          <div class="space-y-8">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-lg">1</div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Industry Analysis</h3>
+                <p class="text-gray-600">Deep dive into your specific industry challenges and opportunities</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-lg">2</div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Custom Solution Design</h3>
+                <p class="text-gray-600">Tailored approach that addresses your unique business requirements</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-lg">3</div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Expert Implementation</h3>
+                <p class="text-gray-600">Skilled Filipino professionals trained specifically for your industry</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-lg">4</div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Continuous Optimization</h3>
+                <p class="text-gray-600">Ongoing refinement and improvement based on results and feedback</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="relative">
+          <div class="bg-gradient-to-br from-blue-600 to-purple-600 p-8 rounded-2xl text-white transform rotate-3">
+            <div class="bg-white/10 backdrop-blur p-6 rounded-lg">
+              <h3 class="text-2xl font-bold mb-4">Success Metrics</h3>
+              <div class="space-y-4">
+                <div class="flex justify-between items-center">
+                  <span>Client Satisfaction</span>
+                  <span class="font-bold">98%</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span>Process Efficiency Gain</span>
+                  <span class="font-bold">60%</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span>Cost Reduction</span>
+                  <span class="font-bold">40%</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span>Time to Implementation</span>
+                  <span class="font-bold">2 weeks</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <img src={svgPinkStar.src} alt="star" width="60" class="absolute -top-8 -right-8" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-20 px-3 md:px-10 bg-gradient-to-br from-purple-600 to-blue-600 text-white relative overflow-hidden">
+    <img src={svgRedStar.src} alt="star" width="100" class="absolute -top-12 right-20 opacity-20 rotate-45" />
+    <img src={svgPinkStar.src} alt="star" width="80" class="absolute bottom-20 left-20 opacity-20" />
+    
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-8">Ready to Transform Your Business?</h2>
+      <p class="text-xl mb-12 opacity-90 max-w-3xl mx-auto">
+        Discover how our industry-specific solutions can enhance efficiency, drive growth, 
+        and accelerate your success with the power of Filipino talent.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <Button text="Start Your Assessment" link="/#quiz" target="_self" />
+        <div class="bg-white/10 backdrop-blur p-4 rounded-lg border border-white/20">
+          <div class="text-white text-lg">✨ Free consultation available</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Enhanced hover effects */
+  .transform:hover {
+    transform: rotate(0deg) scale(1.02) !important;
+  }
+  
+  /* Smooth transitions */
+  .transition-all {
+    transition: all 0.3s ease;
+  }
+  
+  /* Mobile responsive adjustments */
+  @media (max-width: 768px) {
+    .rotate-1, .-rotate-1, .rotate-3 {
+      transform: rotate(0deg) !important;
+    }
+  }
+</style>

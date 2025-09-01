@@ -1,0 +1,281 @@
+---
+import '../styles/global.css'
+import Layout from "../layouts/Layout.astro"
+
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import Button from '../components/Button.astro'
+
+import svgPinkStar from '../assets/pink-star.svg'
+import svgRedStar from '../assets/red-star.svg'
+import svgIdea from '../assets/idea.svg'
+import svgheroContent from '../assets/hero-content.svg'
+
+const achievements = [
+  {
+    year: '2013',
+    title: 'The Beginning',
+    desc: 'Ben starts employing Filipino professionals, planting the seeds for what would become Yoonet',
+    icon: '🌱'
+  },
+  {
+    year: '2018',
+    title: 'Childhood Friends Reunited',
+    desc: 'Ben and Gav, childhood friends, reunite through their shared passion for offshore talent',
+    icon: '🤝'
+  },
+  {
+    year: '2020',
+    title: 'Provincial Innovation',
+    desc: 'Strategic move to Balanga, Bataan - choosing quality of life over Manila congestion',
+    icon: '🏘️'
+  },
+  {
+    year: '2022',
+    title: 'Adopted Son of Balanga',
+    desc: 'Recognized by the local community for contributions to regional development',
+    icon: '🏆'
+  },
+  {
+    year: '2024',
+    title: 'Smart University Vision',
+    desc: 'Contributing to Balanga Smart University Town 2030 vision and community growth',
+    icon: '🎓'
+  }
+]
+
+const values = [
+  {
+    title: 'Community First',
+    desc: 'We believe in building strong, lasting relationships with both our clients and our local Filipino community',
+    icon: '🏠'
+  },
+  {
+    title: 'Quality Over Quantity',
+    desc: 'Our provincial location allows us to focus on exceptional talent and work-life balance over volume',
+    icon: '⭐'
+  },
+  {
+    title: 'Ethical Partnership',
+    desc: 'Creating sustainable, mutually beneficial relationships that help both Australian businesses and Filipino professionals thrive',
+    icon: '🤝'
+  },
+  {
+    title: 'Cultural Bridge',
+    desc: 'Understanding both Australian business culture and Filipino work values to create perfect synergy',
+    icon: '🌉'
+  }
+]
+---
+
+<Layout>
+  <Header />
+  
+  <!-- Hero Section -->
+  <section class="relative px-3 md:px-10 py-20 overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-10">
+        <div class="text-center lg:text-left">
+          <img src={svgheroContent.src} alt="Yoonet" width="120" class="mx-auto lg:mx-0 mb-6" />
+          <h1 class="text-5xl md:text-6xl font-bold mb-6">
+            <span>From Childhood Friends</span>
+            <span class="relative block">
+              <span class="absolute bg-[var(--yellow)] w-full h-[50%] left-0 bottom-0 z-1"></span>
+              <span class="relative z-5">to Business Partners</span>
+            </span>
+          </h1>
+          <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+            The story of Yoonet is the story of two childhood friends who discovered that the best business partnerships are built on genuine relationships, shared values, and a commitment to doing things differently.
+          </p>
+          <Button text="Discover Our Journey" link="#our-story" target="_self" />
+        </div>
+        
+        <div class="relative">
+          <img src={svgRedStar.src} width="60" alt="star" class="absolute -top-6 -right-4 z-10" />
+          <img src={svgIdea.src} width="50" alt="idea" class="absolute top-20 -left-6 z-10" />   
+          <div class="bg-white p-8 border-3 shadow-[8px_8px_0px_rgba(0,0,0,0.3)] relative">
+            <div class="text-center">
+              <div class="text-6xl mb-4">🇵🇭 🤝 🇦🇺</div>
+              <h3 class="text-2xl font-bold mb-4">Bridging Two Worlds</h3>
+              <p class="text-gray-600">Connecting exceptional Filipino talent with growing Australian businesses through genuine partnership and cultural understanding.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img src={svgPinkStar.src} alt="star" width="50" class="absolute -bottom-6 left-10" />
+  </section>
+
+  <!-- Our Story Section -->
+  <section id="our-story" class="py-20 px-3 md:px-10">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">The Yoonet Story</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Sometimes the best business ideas come from the most unexpected reunions. Here's how two childhood friends created something special in the heart of the Philippines.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div class="bg-white p-8 border-2 shadow-[6px_6px_0px_rgba(0,0,0,0.3)] relative transform rotate-1">
+          <div class="text-4xl mb-4">👦👦</div>
+          <h3 class="text-2xl font-bold mb-4 text-blue-600">Childhood Friends</h3>
+          <p class="text-gray-700 leading-relaxed">
+            Ben and Gav grew up together, sharing adventures and dreams. Life took them on different paths, but their friendship and shared values remained strong.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 border-2 shadow-[6px_6px_0px_rgba(0,0,0,0.3)] relative transform -rotate-1">
+          <div class="text-4xl mb-4">💡</div>
+          <h3 class="text-2xl font-bold mb-4 text-purple-600">The Reunion</h3>
+          <p class="text-gray-700 leading-relaxed">
+            Years later, both discovered their passion for offshore talent. When they reconnected, they realized they could build something extraordinary together.
+          </p>
+        </div>
+      </div>
+
+      <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-10 rounded-lg text-center">
+        <h3 class="text-3xl font-bold mb-4">The Vision Takes Shape</h3>
+        <p class="text-xl leading-relaxed max-w-4xl mx-auto">
+          Instead of joining the Manila rush, we chose Balanga, Bataan - a decision that would define everything about Yoonet. 
+          We wanted to create something different: a place where Filipino talent could thrive close to family, 
+          where Australian businesses could find genuine partnership, and where community came first.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="py-20 px-3 md:px-10 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Our Journey</h2>
+        <p class="text-xl text-gray-600">From a simple idea to a thriving community partnership</p>
+      </div>
+
+      <div class="relative">
+        <!-- Timeline line -->
+        <div class="absolute left-1/2 transform -translate-x-1/2 w-1 bg-blue-300 h-full"></div>
+        
+        {achievements.map((achievement, index) => (
+          <div class={`flex items-center mb-16 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
+            <div class="w-1/2 pr-8 pl-8">
+              <div class={`bg-white p-6 border-2 shadow-[4px_4px_0px_rgba(0,0,0,0.3)] ${index % 2 === 0 ? 'transform rotate-1' : 'transform -rotate-1'}`}>
+                <div class="text-3xl mb-3">{achievement.icon}</div>
+                <div class="text-blue-600 font-bold text-lg mb-2">{achievement.year}</div>
+                <h3 class="font-bold text-xl mb-3">{achievement.title}</h3>
+                <p class="text-gray-700">{achievement.desc}</p>
+              </div>
+            </div>
+            
+            <!-- Timeline dot -->
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white"></div>
+            
+            <div class="w-1/2"></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="py-20 px-3 md:px-10">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">What Drives Us</h2>
+        <p class="text-xl text-gray-600">The values that guide every decision we make</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {values.map((value, index) => (
+          <div class={`bg-white p-8 border-2 shadow-[6px_6px_0px_rgba(0,0,0,0.3)] relative ${index % 2 === 0 ? 'transform rotate-1' : 'transform -rotate-1'} hover:rotate-0 transition-transform duration-300`}>
+            <div class="text-4xl mb-4">{value.icon}</div>
+            <h3 class="text-2xl font-bold mb-4 text-blue-600">{value.title}</h3>
+            <p class="text-gray-700 leading-relaxed">{value.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Future Vision Section -->
+  <section class="py-20 px-3 md:px-10 bg-gradient-to-br from-purple-600 to-blue-600 text-white relative overflow-hidden">
+    <img src={svgPinkStar.src} alt="star" width="80" class="absolute -top-8 right-10 opacity-20" />
+    <img src={svgRedStar.src} alt="star" width="60" class="absolute bottom-10 left-10 opacity-20" />
+    
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-8">Looking Forward</h2>
+      <p class="text-xl mb-12 max-w-3xl mx-auto">
+        We're not just building a business - we're building a community, a legacy, and a new way of thinking about offshore partnerships.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white/10 backdrop-blur p-8 rounded-lg border border-white/20">
+          <div class="text-4xl mb-4">🎓</div>
+          <h3 class="text-2xl font-bold mb-4">Smart University Town 2030</h3>
+          <p>Contributing to Balanga's transformation into a center of learning and innovation, creating opportunities for the next generation.</p>
+        </div>
+
+        <div class="bg-white/10 backdrop-blur p-8 rounded-lg border border-white/20">
+          <div class="text-4xl mb-4">🌱</div>
+          <h3 class="text-2xl font-bold mb-4">Sustainable Growth</h3>
+          <p>Expanding our impact while staying true to our community-first values and commitment to quality over quantity.</p>
+        </div>
+
+        <div class="bg-white/10 backdrop-blur p-8 rounded-lg border border-white/20">
+          <div class="text-4xl mb-4">🌉</div>
+          <h3 class="text-2xl font-bold mb-4">Stronger Bridges</h3>
+          <p>Deepening the cultural and business connections between Australia and the Philippines through genuine partnership.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-20 px-3 md:px-10">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="bg-white border-3 shadow-[8px_8px_0px_rgba(0,0,0,0.3)] p-12 relative">
+        <img src={svgIdea.src} alt="idea" width="60" class="absolute -top-8 right-20" />
+        
+        <h2 class="text-4xl font-bold mb-6">Ready to Be Part of Our Story?</h2>
+        <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          Whether you're an Australian business looking for exceptional talent, or a Filipino professional seeking meaningful work, 
+          we'd love to hear from you.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button text="Start Your Journey" link="/contact" target="_self" />
+          <Button text="View Our Services" link="/#services" target="_self" />
+        </div>
+        
+        <img src={svgPinkStar.src} alt="star" width="50" class="absolute -bottom-6 left-20" />
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Timeline responsive adjustments */
+  @media (max-width: 768px) {
+    .relative .absolute.left-1\\/2 {
+      left: 20px;
+      transform: none;
+    }
+    
+    .flex.items-center.mb-16 {
+      flex-direction: column !important;
+      text-align: center;
+    }
+    
+    .w-1\\/2 {
+      width: 100%;
+    }
+  }
+  
+  /* Hover effects */
+  .transform:hover {
+    transform: rotate(0deg) !important;
+  }
+</style>

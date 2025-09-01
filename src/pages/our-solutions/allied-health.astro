@@ -1,0 +1,260 @@
+---
+import '../../styles/global.css'
+import Layout from "../../layouts/Layout.astro"
+
+import Header from '../../components/Header.astro'
+import Footer from '../../components/Footer.astro'
+import Button from '../../components/Button.astro'
+import AlliedHealthQuiz from '../../components/AlliedHealthQuiz.astro'
+
+import svgPinkStar from '../../assets/pink-star.svg'
+import svgRedStar from '../../assets/red-star.svg'
+import svgIdea from '../../assets/idea.svg'
+
+const services = [
+  { title: 'Report Generation', desc: 'Comprehensive clinical reports and documentation', icon: '📊' },
+  { title: 'Letter Drafting', desc: 'Professional correspondence and referral letters', icon: '📝' },
+  { title: 'Case Documentation', desc: 'Detailed patient case notes and records', icon: '📋' },
+  { title: 'Database Management', desc: 'Patient data organization and maintenance', icon: '💾' },
+  { title: 'Patient Recalls', desc: 'Automated follow-up and appointment scheduling', icon: '📞' },
+  { title: 'Patient Reactivation', desc: 'Re-engagement campaigns for inactive patients', icon: '🔄' },
+  { title: 'Cliniko Support', desc: 'Expert platform management and optimization', icon: '🏥' },
+  { title: 'Compliance Management', desc: 'Healthcare privacy and regulatory compliance', icon: '🛡️' }
+]
+
+const benefits = [
+  { title: 'Boost Staff Retention', desc: 'Reduce administrative burden on clinical staff', icon: '👥' },
+  { title: 'Increase Profitability', desc: 'Optimize operations and reduce overhead costs', icon: '💰' },
+  { title: 'Improve Patient Outcomes', desc: 'More time for patient care and clinical excellence', icon: '❤️' },
+  { title: 'Competitive Edge', desc: 'Advanced administrative support and efficiency', icon: '🏆' }
+]
+
+const securityFeatures = [
+  { title: '24/7 Monitored Office', desc: 'Round-the-clock security and supervision' },
+  { title: 'Strict Access Controls', desc: 'Multi-layer authentication and permissions' },
+  { title: 'Physical Firewalls', desc: 'Advanced network security infrastructure' },
+  { title: 'Compliance Standards', desc: 'Australian/NZ healthcare privacy requirements' }
+]
+---
+
+<Layout>
+  <Header />
+  
+  <!-- Hero Section -->
+  <section class="relative px-3 md:px-10 py-20 overflow-hidden bg-gradient-to-br from-blue-50 to-green-50 w-full">
+    <div class="max-w-6xl mx-auto w-full px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="text-4xl">🏥</div>
+            <span class="text-lg font-semibold text-blue-600">Allied Health Solutions</span>
+          </div>
+          <h1 class="text-5xl md:text-6xl font-bold mb-6">
+            <span>Specialized Virtual Support</span>
+            <span class="relative block">
+              <span class="absolute bg-[var(--yellow)] w-full h-[50%] left-0 bottom-0 z-1"></span>
+              <span class="relative z-5">for Healthcare Excellence</span>
+            </span>
+          </h1>
+          <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+            Deep industry expertise with over a decade of Cliniko experience, healthcare compliance, 
+            and Filipino professionals who understand the unique needs of allied health practices.
+          </p>
+          <Button text="Get Your Free Assessment" link="/#quiz" target="_self" />
+        </div>
+        
+        <div class="relative">
+          <img src={svgRedStar.src} width="80" alt="star" class="absolute -top-10 -right-8 z-10 hidden md:block" />
+          <img src={svgIdea.src} width="60" alt="idea" class="absolute bottom-20 -left-8 z-10 hidden md:block" />
+          
+          <div class="bg-white p-8 border-3 shadow-[8px_8px_0px_rgba(0,0,0,0.3)] transform rotate-2">
+            <h3 class="text-2xl font-bold mb-6 text-center">Cliniko Expertise</h3>
+            <div class="space-y-4">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">✓</div>
+                <span>Over 10 Years Experience</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">✓</div>
+                <span>Cliniko Extension Store Apps</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold">✓</div>
+                <span>Comprehensive Platform Knowledge</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold">✓</div>
+                <span>Healthcare Compliance Focus</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img src={svgPinkStar.src} alt="star" width="50" class="absolute bottom-10 left-10 hidden md:block" />
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-20 px-3 md:px-10">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Comprehensive Allied Health Services</h2>
+        <p class="text-xl text-gray-600">Turnkey processes designed specifically for healthcare practices</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {services.map((service, index) => (
+          <div class={`bg-white p-6 border-2 shadow-[4px_4px_0px_rgba(0,0,0,0.3)] rounded-lg transform ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0 hover:scale-105 transition-all duration-300`}>
+            <div class="text-4xl mb-4">{service.icon}</div>
+            <h3 class="text-lg font-bold mb-2 text-blue-600">{service.title}</h3>
+            <p class="text-gray-600 text-sm">{service.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Security & Compliance -->
+  <section class="py-20 px-3 md:px-10 bg-gray-50 text-gray-800 relative overflow-hidden w-full">
+    <img src={svgPinkStar.src} alt="star" width="100" class="absolute -top-12 right-20 opacity-20" />
+    
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Security & Compliance First</h2>
+        <p class="text-xl text-gray-600">Healthcare-grade security measures protecting your sensitive data</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {securityFeatures.map((feature, index) => (
+          <div class="bg-white p-6 rounded-lg border-2 shadow-[4px_4px_0px_rgba(0,0,0,0.3)]">
+            <div class="text-3xl mb-4">🔒</div>
+            <h3 class="text-lg font-bold mb-2 text-blue-600">{feature.title}</h3>
+            <p class="text-sm text-gray-600">{feature.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-20 px-3 md:px-10 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Transform Your Practice</h2>
+        <p class="text-xl text-gray-600">Measurable benefits that make a real difference</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {benefits.map((benefit, index) => (
+          <div class={`bg-white p-8 rounded-lg border-2 shadow-[6px_6px_0px_rgba(0,0,0,0.3)] transform ${index % 2 === 0 ? '-rotate-1' : 'rotate-1'} hover:rotate-0 transition-all duration-300`}>
+            <div class="text-5xl mb-4">{benefit.icon}</div>
+            <h3 class="text-xl font-bold mb-3 text-green-600">{benefit.title}</h3>
+            <p class="text-gray-700">{benefit.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Characteristics -->
+  <section class="py-20 px-3 md:px-10">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="text-4xl md:text-5xl font-bold mb-8">Our Allied Health Team</h2>
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white">🎓</div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">College-Educated Professionals</h3>
+                <p class="text-gray-600">University-trained professionals with healthcare industry focus</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white">⭐</div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Strong Work Ethic</h3>
+                <p class="text-gray-600">Catholic-inspired work ethic and commitment to excellence</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white">🎯</div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Culturally Attuned</h3>
+                <p class="text-gray-600">Deep understanding of practice improvement and patient care</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white">💪</div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Healthcare Expertise</h3>
+                <p class="text-gray-600">Specialized knowledge in allied health workflows and compliance</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="relative">
+          <div class="bg-white p-8 border-2 shadow-[6px_6px_0px_rgba(0,0,0,0.3)] rounded-lg transform -rotate-2">
+            <h3 class="text-2xl font-bold mb-6 text-blue-600">Specialization Focus</h3>
+            <div class="space-y-4">
+              <div class="bg-blue-50 p-4 rounded-lg border">
+                <div class="font-bold mb-1 text-gray-800">🦶 Podiatry Clinics</div>
+                <div class="text-sm text-gray-600">Specialized workflows and compliance</div>
+              </div>
+              <div class="bg-green-50 p-4 rounded-lg border">
+                <div class="font-bold mb-1 text-gray-800">🏥 Multi-Discipline Practices</div>
+                <div class="text-sm text-gray-600">Coordinated care management</div>
+              </div>
+              <div class="bg-purple-50 p-4 rounded-lg border">
+                <div class="font-bold mb-1 text-gray-800">🇦🇺🇳🇿 ANZ Healthcare</div>
+                <div class="text-sm text-gray-600">Regional compliance expertise</div>
+              </div>
+            </div>
+          </div>
+          <img src={svgRedStar.src} alt="star" width="60" class="absolute -bottom-6 -right-6" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Allied Health Quiz -->
+  <AlliedHealthQuiz />
+  
+  <!-- CTA Section -->
+  <section class="py-20 px-3 md:px-10 bg-black text-white relative overflow-hidden w-full">
+    <img src={svgPinkStar.src} alt="star" width="120" class="absolute -top-16 -left-16 opacity-20 hidden md:block" />
+    
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-8">Ready to Elevate Your Practice?</h2>
+      <p class="text-xl mb-12 opacity-90">
+        Join allied health practices across Australia and New Zealand who have transformed 
+        their operations with our specialized virtual support.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <Button text="Start Free Consultation" link="#allied-health-quiz" target="_self" />
+        <div class="bg-white/10 backdrop-blur p-4 rounded-lg border border-white/20">
+          <div class="text-lg">🏥 Healthcare-specialized team ready</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .transform:hover {
+    transform: rotate(0deg) scale(1.02) !important;
+  }
+  
+  @media (max-width: 768px) {
+    .rotate-1, .-rotate-1, .rotate-2, .-rotate-2 {
+      transform: rotate(0deg) !important;
+    }
+  }
+</style>

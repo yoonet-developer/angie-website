@@ -1,0 +1,541 @@
+---
+import Button from './Button.astro'
+import svgPinkStar from '../assets/pink-star.svg'
+
+const roleOptions = [
+  { id: 'owner', name: 'I own a clinic', icon: '💼' },
+  { id: 'manager', name: 'I manage a clinic', icon: '📱' },
+  { id: 'receptionist', name: 'I\'m a receptionist in a clinic', icon: '🩰' }
+]
+
+const practiceTypes = [
+  { id: 'podiatrist', name: 'Podiatrist', icon: '🦶' },
+  { id: 'physiotherapist', name: 'Physiotherapist', icon: '🏃‍♂️' },
+  { id: 'chiropractor', name: 'Chiropractor', icon: '🦴' },
+  { id: 'osteo', name: 'Osteopath', icon: '👐' },
+  { id: 'other', name: 'Other', icon: '🏥' }
+]
+
+const softwareOptions = [
+  { id: 'cliniko', name: 'Cliniko', icon: '💻' },
+  { id: 'halaxy', name: 'Halaxy', icon: '📱' },
+  { id: 'frontdesk', name: 'Front Desk', icon: '🖥️' },
+  { id: 'pracsoft', name: 'PracSoft', icon: '⚡' },
+  { id: 'nookal', name: 'Nookal', icon: '🔧' },
+  { id: 'other', name: 'Other', icon: '📋' }
+]
+
+const practitionerOptions = [
+  { id: '1', name: '1 Practitioner', icon: '👤' },
+  { id: '2-3', name: '2-3 Practitioners', icon: '👥' },
+  { id: '4-10', name: '4-10 Practitioners', icon: '👥👥' },
+  { id: '10plus', name: '10+ Practitioners', icon: '👥👥👥' }
+]
+
+const adminOptions = [
+  { id: '0', name: 'No dedicated admin staff', icon: '❌' },
+  { id: '1', name: '1 Administrator', icon: '👤' },
+  { id: '2-3', name: '2-3 Administrators', icon: '👥' },
+  { id: '4plus', name: '4+ Administrators', icon: '👥👥' }
+]
+
+const reasonOptions = [
+  { id: 'experience', name: 'I just want better patient experiences', icon: '❤️' },
+  { id: 'turnover', name: 'We\'re running behind constant staff turnover', icon: '🔄' },
+  { id: 'growth', name: 'We want to focus on growing the practice', icon: '📈' },
+  { id: 'costs', name: 'Looking to reduce operational costs', icon: '💰' }
+]
+
+const helpOptions = [
+  { id: 'person', name: 'I\'ve got my own processes. I just need a person', icon: '👤' },
+  { id: 'open', name: 'I\'ve got some processes but open to new ideas', icon: '💡' },
+  { id: 'expert', name: 'You\'re the expert at offshoring to Allied Health. We\'re in your hands', icon: '🤝' }
+]
+
+const processOptions = [
+  { id: 'admin', name: 'Administrative Tasks', desc: 'Data entry, filing, documentation' },
+  { id: 'patient', name: 'Patient Communication', desc: 'Follow-ups, recalls, appointment confirmations' },
+  { id: 'marketing', name: 'Marketing & Social Media', desc: 'Content creation, social media management' },
+  { id: 'finance', name: 'Finance & Billing', desc: 'Invoicing, payments, bookkeeping' },
+  { id: 'clinical', name: 'Clinical Support', desc: 'Notes, reports, scan management' },
+  { id: 'tech', name: 'Tech Support', desc: 'Software management, troubleshooting' }
+]
+
+const solutions = {
+  simple: {
+    title: 'Hire One Person',
+    description: 'Perfect for smaller practices or specific task management',
+    training: 'Basic admin and communication training matrix',
+    price: 'Starting $1,800/month'
+  },
+  standard: {
+    title: 'Hire Two People',
+    description: 'Ideal for growing practices with diverse needs',
+    training: 'Comprehensive dual-role training matrix',
+    price: 'Starting $3,200/month'
+  },
+  bespoke: {
+    title: 'Bespoke Solution',
+    description: 'Custom team and processes tailored to your specific requirements',
+    training: 'Fully customized training and management system',
+    price: 'Custom pricing'
+  }
+}
+---
+
+<style>
+  .quiz-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    border: 3px solid black;
+    box-shadow: 8px 8px 0px rgba(0,0,0,0.3);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .progress-indicator {
+    padding: 30px 20px 20px;
+    background: #f0f9ff;
+  }
+  
+  .progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 0 auto;
+    max-width: 500px;
+  }
+  
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #60a5fa, #34d399, #a78bfa);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+    width: 11%;
+  }
+  
+  .progress-text {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #6b7280;
+    font-weight: 500;
+  }
+  
+  .quiz-content {
+    padding: 40px;
+  }
+  
+  .option-grid {
+    display: grid;
+    gap: 15px;
+    margin-top: 30px;
+  }
+  
+  .option {
+    padding: 20px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: white;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .option:hover {
+    border-color: #0ea5e9;
+    box-shadow: 0 4px 8px rgba(14, 165, 233, 0.1);
+  }
+  
+  .option.selected {
+    border-color: #0ea5e9;
+    background: #f0f9ff;
+    box-shadow: 0 4px 8px rgba(14, 165, 233, 0.2);
+  }
+  
+  .option-icon {
+    font-size: 2rem;
+    min-width: 50px;
+  }
+  
+  .option-content {
+    flex: 1;
+  }
+  
+  .option-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #374151;
+  }
+  
+  .option-desc {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin-top: 4px;
+  }
+  
+  .quiz-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    gap: 20px;
+  }
+  
+  .btn-quiz {
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 2px solid;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  
+  .btn-primary {
+    background: #0ea5e9;
+    color: white;
+    border-color: #0ea5e9;
+  }
+  
+  .btn-primary:hover:not(:disabled) {
+    background: #0284c7;
+    border-color: #0284c7;
+  }
+  
+  .btn-primary:disabled {
+    background: #9ca3af;
+    border-color: #9ca3af;
+    cursor: not-allowed;
+  }
+  
+  .btn-secondary {
+    background: white;
+    color: #374151;
+    border-color: #d1d5db;
+  }
+  
+  .btn-secondary:hover {
+    background: #f9fafb;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .success-content {
+    text-align: center;
+    padding: 40px 20px;
+  }
+  
+  .success-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+  }
+  
+  .zoom-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 30px;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.2s;
+  }
+  
+  .zoom-link:hover {
+    background: #1d4ed8;
+  }
+  
+  .solution-options {
+    display: grid;
+    gap: 20px;
+    margin: 30px 0;
+  }
+  
+  .solution-card {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.2s;
+    text-align: left;
+  }
+  
+  .solution-card:hover {
+    border-color: #0ea5e9;
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.1);
+  }
+  
+  .training-matrix {
+    background: #f0f9ff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    margin: 10px 0;
+    color: #0369a1;
+  }
+  
+  .price {
+    font-weight: bold;
+    color: #059669;
+    font-size: 1.1rem;
+  }
+</style>
+
+<section class="py-20 px-4 bg-gradient-to-br from-blue-50 to-green-50" id="allied-health-quiz">
+  <div class="max-w-4xl mx-auto text-center mb-12">
+    <h2 class="text-4xl font-bold mb-4 text-gray-800">Allied Health Practice Assessment</h2>
+    <p class="text-xl text-gray-600">Quick assessment to find the perfect solution for your practice</p>
+  </div>
+  
+  <div class="quiz-container" id="alliedHealthQuizContainer">
+    <!-- Progress Indicator -->
+    <div class="progress-indicator">
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+      <div class="progress-text" id="progressText">Step 1 of 9</div>
+    </div>
+    
+    <!-- Step 1: Welcome -->
+    <div class="quiz-content" id="ahStep1">
+      <h3 class="text-2xl font-bold text-center mb-2 text-blue-600">Welcome!</h3>
+      <p class="text-center text-gray-600 mb-6">Let's find the perfect outsourcing solution for your practice</p>
+      
+      <div class="option-grid">
+        <div class="option" data-value="allied" onclick="selectAHOption(1, 'allied'); showAHStep(2);">
+          <div class="option-icon">🏥</div>
+          <div class="option-content">
+            <div class="option-name">I'm in Allied Health. Let's go!</div>
+          </div>
+        </div>
+        <div class="option" data-value="other" onclick="selectAHOption(1, 'other'); showAHStep(2);">
+          <div class="option-icon">💼</div>
+          <div class="option-content">
+            <div class="option-name">Tell us about you</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Step 2: Your Role -->
+    <div class="quiz-content hidden" id="ahStep2">
+      <h3 class="text-2xl font-bold text-center mb-2 text-blue-600">Tell us about you</h3>
+      <p class="text-center text-gray-600 mb-6">What's your role in the clinic?</p>
+      
+      <div class="option-grid">
+        {roleOptions.map(role => (
+          <div class="option" data-value={role.id} onclick={`selectAHOption(2, '${role.id}'); showAHStep(3);`}>
+            <div class="option-icon">{role.icon}</div>
+            <div class="option-content">
+              <div class="option-name">{role.name}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+    
+    <!-- Step 3: Clinic Type -->
+    <div class="quiz-content hidden" id="ahStep3">
+      <h3 class="text-2xl font-bold text-center mb-2 text-blue-600">What type of clinic?</h3>
+      <p class="text-center text-gray-600 mb-6">Help us understand your specialization</p>
+      
+      <div class="option-grid">
+        {practiceTypes.map(type => (
+          <div class="option" data-value={type.id} onclick={`selectAHOption(3, '${type.id}'); showAHStep(4);`}>
+            <div class="option-icon">{type.icon}</div>
+            <div class="option-content">
+              <div class="option-name">{type.name}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+    
+    <!-- Step 4: Software -->
+    <div class="quiz-content hidden" id="ahStep4">
+      <h3 class="text-2xl font-bold text-center mb-2 text-blue-600">Awesome! What software do you use?</h3>
+      <p class="text-center text-gray-600 mb-6">We have specialized expertise in these platforms</p>
+      
+      <div class="option-grid">
+        {softwareOptions.map(software => (
+          <div class="option" data-value={software.id} onclick={`selectAHOption(4, '${software.id}'); showAHStep(5);`}>
+            <div class="option-icon">{software.icon}</div>
+            <div class="option-content">
+              <div class="option-name">{software.name}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+    
+    <!-- Step 5: Practitioners -->
+    <div class="quiz-content hidden" id="ahStep5">
+      <h3 class="text-2xl font-bold text-center mb-2 text-blue-600">How many practitioners are in your business?</h3>
+      <p class="text-center text-gray-600 mb-6">This helps us understand your practice size</p>
+      
+      <div class="option-grid">
+        {practitionerOptions.map(practitioner => (
+          <div class="option" data-value={practitioner.id} onclick={`selectAHOption(5, '${practitioner.id}'); showAHStep(6);`}>
+            <div class="option-icon">{practitioner.icon}</div>
+            <div class="option-content">
+              <div class="option-name">{practitioner.name}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+    
+    <!-- Step 6: Administrators -->
+    <div class="quiz-content hidden" id="ahStep6">
+      <h3 class="text-2xl font-bold text-center mb-2 text-blue-600">How many administrators?</h3>
+      <p class="text-center text-gray-600 mb-6">Understanding your current admin support</p>
+      
+      <div class="option-grid">
+        {adminOptions.map(admin => (
+          <div class="option" data-value={admin.id} onclick={`selectAHOption(6, '${admin.id}'); showAHStep(7);`}>
+            <div class="option-icon">{admin.icon}</div>
+            <div class="option-content">
+              <div class="option-name">{admin.name}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+    
+    <!-- Step 7: Why Offshoring -->
+    <div class="quiz-content hidden" id="ahStep7">
+      <h3 class="text-2xl font-bold text-center mb-2 text-blue-600">Why are you interested in offshoring?</h3>
+      <p class="text-center text-gray-600 mb-6">Help us understand your primary motivation</p>
+      
+      <div class="option-grid">
+        {reasonOptions.map(reason => (
+          <div class="option" data-value={reason.id} onclick={`selectAHOption(7, '${reason.id}'); showAHStep(8);`}>
+            <div class="option-icon">{reason.icon}</div>
+            <div class="option-content">
+              <div class="option-name">{reason.name}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+    
+    <!-- Step 8: How We Can Help -->
+    <div class="quiz-content hidden" id="ahStep8">
+      <h3 class="text-2xl font-bold text-center mb-2 text-blue-600">How can we help?</h3>
+      <p class="text-center text-gray-600 mb-6">Choose the approach that best fits your needs</p>
+      
+      <div class="option-grid">
+        {helpOptions.map(help => (
+          <div class="option" data-value={help.id} onclick={`selectAHOption(8, '${help.id}'); showAHStep(9);`}>
+            <div class="option-icon">{help.icon}</div>
+            <div class="option-content">
+              <div class="option-name">{help.name}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+    
+    <!-- Step 9: Solution -->
+    <div class="quiz-content hidden" id="ahStep9">
+      <div class="success-content">
+        <div class="success-icon">🧠</div>
+        <h3 class="text-2xl font-bold mb-4 text-blue-600">Based on what you've said, we recommend:</h3>
+        
+        <div class="solution-options">
+          <div class="solution-card" data-solution="simple">
+            <h4 class="text-lg font-bold text-gray-800">Hire One Person</h4>
+            <p class="text-gray-600 mb-2">Perfect for smaller practices or specific task management</p>
+            <div class="training-matrix">📋 Specialized allied health training matrix</div>
+            <div class="price">Starting $1,800/month</div>
+          </div>
+          
+          <div class="solution-card" data-solution="bespoke">
+            <h4 class="text-lg font-bold text-gray-800">Get a Bespoke Solution</h4>
+            <p class="text-gray-600 mb-2">Custom team and processes tailored to your requirements</p>
+            <div class="training-matrix">📋 Fully customized training and management system</div>
+            <div class="price">Custom pricing based on your needs</div>
+          </div>
+        </div>
+        
+        <a href="https://calendly.com/yoonet-consultation" class="zoom-link" target="_blank">
+          📞 Book a Call
+        </a>
+        
+        <p class="text-sm text-gray-500 mt-4">
+          Schedule a consultation to discuss your perfect solution
+        </p>
+      </div>
+      
+      <div class="quiz-buttons">
+        <button class="btn-quiz btn-secondary" id="ahRestartQuiz">Start Over</button>
+        <div></div>
+      </div>
+    </div>
+  </div>
+  
+  <img src={svgPinkStar.src} alt="decoration" width="60" class="absolute -right-4 -bottom-4" />
+</section>
+
+<script>
+  let ahCurrentStep = 1;
+  let ahAnswers = {};
+  
+  function showAHStep(step) {
+    // Hide all steps
+    document.querySelectorAll('[id^="ahStep"]').forEach(el => el.classList.add('hidden'));
+    // Show current step
+    document.getElementById(`ahStep${step}`).classList.remove('hidden');
+    
+    // Update progress bar
+    const progressBar = document.getElementById('progressBar');
+    const progressText = document.getElementById('progressText');
+    
+    if (progressBar && progressText) {
+      const progressPercentage = (step / 9) * 100;
+      progressBar.style.width = `${progressPercentage}%`;
+      progressText.textContent = `Step ${step} of 9`;
+    }
+    
+    ahCurrentStep = step;
+  }
+  
+  function selectAHOption(step, value) {
+    // Store answer
+    ahAnswers[`step${step}`] = value;
+    
+    // Update selected state for visual feedback
+    const stepEl = document.getElementById(`ahStep${step}`);
+    if (stepEl) {
+      const options = stepEl.querySelectorAll('.option');
+      options.forEach(opt => opt.classList.remove('selected'));
+      const selectedOption = stepEl.querySelector(`[data-value="${value}"]`);
+      if (selectedOption) {
+        selectedOption.classList.add('selected');
+      }
+    }
+  }
+  
+  // Global functions for onclick handlers
+  window.showAHStep = showAHStep;
+  window.selectAHOption = selectAHOption;
+  
+  // Event listeners
+  document.addEventListener('DOMContentLoaded', function() {
+    // Restart functionality
+    document.getElementById('ahRestartQuiz')?.addEventListener('click', () => {
+      ahCurrentStep = 1;
+      ahAnswers = {};
+      document.querySelectorAll('#alliedHealthQuizContainer .option').forEach(opt => opt.classList.remove('selected'));
+      showAHStep(1);
+    });
+  });
+</script>
